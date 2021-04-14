@@ -1,0 +1,6 @@
+module Pods_Sunbera_SunberaTests {
+  umbrella header "Pods-Sunbera-SunberaTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
