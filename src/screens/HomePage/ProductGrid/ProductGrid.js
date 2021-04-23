@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -19,10 +19,10 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import _Text from '@text/_Text';
-import {connect} from 'react-redux';
-import {color} from '@values/colors';
-import {urls} from '@api/urls';
-import {withNavigationFocus} from '@react-navigation/compat';
+import { connect } from 'react-redux';
+import { color } from '@values/colors';
+import { urls } from '@api/urls';
+import { withNavigationFocus } from '@react-navigation/compat';
 
 import ProductGridStyle from '@productGrid/ProductGridStyle';
 import {
@@ -36,18 +36,18 @@ import {
   getProductTotalCount,
 } from '@productGrid/ProductGridAction';
 
-import {getTotalCartCount, allParameters} from '@homepage/HomePageAction';
+import { getTotalCartCount, allParameters } from '@homepage/HomePageAction';
 
-import {Toast, CheckBox} from 'native-base';
+import { Toast, CheckBox } from 'native-base';
 import Modal from 'react-native-modal';
-import {strings} from '@values/strings';
+import { strings } from '@values/strings';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import FastImage from 'react-native-fast-image';
-import _, {fromPairs} from 'lodash';
+import _, { fromPairs } from 'lodash';
 import Theme from '../../../values/Theme';
 import IconPack from '@login/IconPack';
 
-import {navigate} from '../../../../RootNavigation';
+import { navigate } from '../../../../RootNavigation';
 
 var userId = '';
 var selectedProductIds = [];
@@ -118,13 +118,9 @@ class ProductGrid extends Component {
   }
 
   componentDidMount = () => {
-    const {categoryData, page, fromExclusive} = this.state;
+    const { categoryData, page, fromExclusive } = this.state;
 
-    if (
-      categoryData &&
-      !fromExclusive &&
-      categoryData.subcategory.length === 0
-    ) {
+    if (categoryData && !fromExclusive && categoryData.subcategory.length === 0) {
       const data = new FormData();
       data.append('table', 'product_master');
       data.append('mode_type', 'normal');
@@ -148,7 +144,7 @@ class ProductGrid extends Component {
       this.props.getProductTotalCount(productCountData);
     }
     let data2 = new FormData();
-    data2.append('collection_id', 83);
+    data2.append('collection_id', categoryData.id);
     data2.append('table', 'product_master');
     data2.append('user_id', userId);
     data2.append('mode_type', 'all_filter');
@@ -404,7 +400,7 @@ class ProductGrid extends Component {
         color: 'warning',
         duration: 2500,
       });
-      this.setState({page: 0});
+      this.setState({ page: 0 });
     }
 
     if (
@@ -475,7 +471,7 @@ class ProductGrid extends Component {
           duration: 2500,
         });
 
-        this.setState({selectedProducts: [], isSelectPressed: false});
+        this.setState({ selectedProducts: [], isSelectPressed: false });
         selectedProductIds = [];
       }
     }
@@ -509,14 +505,14 @@ class ProductGrid extends Component {
             );
 
             this.setState(
-              {quantity: addProductToCartData.data.quantity},
+              { quantity: addProductToCartData.data.quantity },
               () => {
                 console.log(JSON.stringify(this.state.gridData));
               },
             );
           } else if (addProductToCartData.data == null) {
             this.state.gridData[dex].quantity = parseInt(0);
-            this.setState({quantity: '0'}, () => {
+            this.setState({ quantity: '0' }, () => {
               console.log(JSON.stringify(this.state.gridData));
             });
           }
@@ -528,7 +524,7 @@ class ProductGrid extends Component {
           text: addProductToCartData && addProductToCartData.msg,
           duration: 2500,
         });
-        this.setState({isSelectPressed: false, selectedProducts: []});
+        this.setState({ isSelectPressed: false, selectedProducts: [] });
         selectedProductIds = [];
       }
     }
@@ -566,14 +562,14 @@ class ProductGrid extends Component {
             );
 
             this.setState(
-              {quantity: productAddToCartPlusOneData.data.quantity},
+              { quantity: productAddToCartPlusOneData.data.quantity },
               () => {
                 console.log(JSON.stringify(this.state.gridData));
               },
             );
           } else if (productAddToCartPlusOneData.data == null) {
             this.state.gridData[Index].quantity = parseInt(0);
-            this.setState({quantity: '0'}, () => {
+            this.setState({ quantity: '0' }, () => {
               console.log(JSON.stringify(this.state.gridData));
             });
           }
@@ -665,17 +661,14 @@ class ProductGrid extends Component {
   gridView = item => {
     const {
       gridItemDesign,
-      latestTextView,
-      latestTextView2,
       gridImage,
-      gridDesign,
       border,
       iconView,
     } = ProductGridStyle;
 
     let url = urls.imageUrl + 'public/backend/product_images/thumb_image/';
 
-    const {isSelectPressed, selectedItem, selectedProducts} = this.state;
+    const { isSelectPressed, selectedItem } = this.state;
 
     return (
       <TouchableOpacity
@@ -685,18 +678,17 @@ class ProductGrid extends Component {
               ? this.showAlreadyToast()
               : this.selectProduct(item, item.product_inventory_id)
             : this.props.navigation.navigate('ProductDetails', {
-                productItemDetails: item,
-              })
+              productItemDetails: item,
+            })
         }>
         <View
           style={{
             backgroundColor: color.white,
-            // height: Platform.OS === 'android' ? hp(34) : hp(32),
             width: wp(46),
             marginHorizontal: hp(1),
             borderRadius: 15,
             shadowColor: '#000',
-            shadowOffset: {width: 0.5, height: 0.5},
+            shadowOffset: { width: 0.5, height: 0.5 },
             shadowOpacity: 0.25,
             shadowRadius: 2,
             elevation: 2.2,
@@ -704,23 +696,20 @@ class ProductGrid extends Component {
           activeOpacity={1}>
           <View style={gridItemDesign}>
             <TouchableOpacity
-              style={{width: '100%'}}
+              style={{ width: '100%' }}
               onPress={() =>
                 isSelectPressed
-                  ? item.quantity > 0
-                    ? this.showAlreadyToast()
-                    : this.selectProduct(item, item.product_inventory_id)
-                  : this.props.navigation.navigate('ProductDetails', {
-                      productItemDetails: item,
-                    })
+                  ? item.quantity > 0 ? this.showAlreadyToast() : this.selectProduct(item, item.product_inventory_id)
+                  : this.props.navigation.navigate('ProductDetails', { productItemDetails: item, })
               }
               onLongPress={() => this.showProductImageModal(item)}>
               <Image
                 style={gridImage}
                 defaultSource={IconPack.APP_LOGO}
-                source={{uri: url + item.image_name}}
+                source={item.image_name != '' ? { uri: url + item.image_name } : IconPack.APP_LOGO}
               />
             </TouchableOpacity>
+
             <View
               style={{
                 flexDirection: 'row',
@@ -730,29 +719,28 @@ class ProductGrid extends Component {
                 top: 2,
                 flex: 1,
               }}>
-              <View style={{flex: 1}}>
+              <View style={{ flex: 1 }}>
                 {item.key.map((key, i) => {
                   return (
                     <_Text
                       numberOfLines={1}
                       fsSmall
                       textColor={'#000000'}
-                      style={{...Theme.ffLatoRegular12}}>
+                      style={{ ...Theme.ffLatoRegular14 }}>
                       {key.replace('_', ' ')}
                     </_Text>
                   );
                 })}
               </View>
 
-              <View style={{flex: 1}}>
+              <View style={{ flex: 1 }}>
                 {item.value.map((value, j) => {
                   return (
                     <_Text
                       numberOfLines={1}
                       fsPrimary
-                      //textColor={color.brandColor}
                       textColor={'#000000'}
-                      style={{...Theme.ffLatoRegular12}}>
+                      style={{ ...Theme.ffLatoRegular14 }}>
                       {value ? value : '-'}
                     </_Text>
                   );
@@ -772,7 +760,7 @@ class ProductGrid extends Component {
                   }>
                   <Image
                     source={require('../../../assets/Hertfill.png')}
-                    style={{height: hp(3.1), width: hp(3), marginTop: 2}}
+                    style={{ height: hp(3.1), width: hp(3), marginTop: 2 }}
                     resizeMode="contain"
                   />
                 </TouchableOpacity>
@@ -784,7 +772,7 @@ class ProductGrid extends Component {
                   }>
                   <Image
                     source={require('../../../assets/Cart1.png')}
-                    style={{height: hp(3.1), width: hp(3), marginTop: 2}}
+                    style={{ height: hp(3.1), width: hp(3), marginTop: 2 }}
                     resizeMode="contain"
                   />
                 </TouchableOpacity>
@@ -801,7 +789,7 @@ class ProductGrid extends Component {
                   }>
                   <Image
                     source={require('../../../assets/Minus1.png')}
-                    style={{height: hp(3), width: hp(3)}}
+                    style={{ height: hp(3), width: hp(3) }}
                     resizeMode="contain"
                   />
                 </TouchableOpacity>
@@ -821,7 +809,7 @@ class ProductGrid extends Component {
                   }>
                   <Image
                     source={require('../../../assets/Plus1.png')}
-                    style={{height: hp(3), width: hp(3)}}
+                    style={{ height: hp(3), width: hp(3) }}
                     resizeMode="contain"
                   />
                 </TouchableOpacity>
@@ -862,7 +850,7 @@ class ProductGrid extends Component {
                 }>
                 <Image
                   source={require('../../../assets/image/tick.png')}
-                  style={{height: 30, width: 30, borderRadius: 30 / 2}}
+                  style={{ height: 30, width: 30, borderRadius: 30 / 2 }}
                 />
               </TouchableOpacity>
             </View>
@@ -875,9 +863,6 @@ class ProductGrid extends Component {
   gridViewFull = item => {
     const {
       gridItemDesignTwo,
-      latestTextViewTwo,
-      latestTextViewThree,
-      gridImage,
       gridImage2,
       borderTwo,
       iconViewTwo,
@@ -885,7 +870,7 @@ class ProductGrid extends Component {
 
     let url = urls.imageUrl + 'public/backend/product_images/zoom_image/';
 
-    const {isSelectPressed, selectedItem, selectedProducts} = this.state;
+    const { isSelectPressed, selectedItem, selectedProducts } = this.state;
 
     return (
       <TouchableOpacity
@@ -895,18 +880,17 @@ class ProductGrid extends Component {
               ? this.showAlreadyToast()
               : this.selectProduct(item, item.product_inventory_id)
             : this.props.navigation.navigate('ProductDetails', {
-                productItemDetails: item,
-              })
+              productItemDetails: item,
+            })
         }>
         <View
           style={{
             backgroundColor: color.white,
-            // height: Platform.OS === 'android' ? hp(34) : hp(31),
             width: '96%',
             marginHorizontal: hp(1),
             borderRadius: 15,
             shadowColor: '#000',
-            shadowOffset: {width: 0.5, height: 0.5},
+            shadowOffset: { width: 0.5, height: 0.5 },
             shadowOpacity: 0.25,
             shadowRadius: 2,
             elevation: 2.2,
@@ -920,16 +904,15 @@ class ProductGrid extends Component {
                     ? this.showAlreadyToast()
                     : this.selectProduct(item, item.product_inventory_id)
                   : this.props.navigation.navigate('ProductDetails', {
-                      productItemDetails: item,
-                    })
+                    productItemDetails: item,
+                  })
               }
               onLongPress={() => this.showProductImageModal(item)}
-              style={{width: '100%'}}>
+              style={{ width: '100%' }}>
               <Image
-                resizeMode="cover"
                 style={gridImage2}
                 defaultSource={IconPack.APP_LOGO}
-                source={{uri: url + item.image_name}}
+                source={item.image_name != '' ? { uri: url + item.image_name } : IconPack.APP_LOGO}
               />
             </TouchableOpacity>
 
@@ -945,6 +928,7 @@ class ProductGrid extends Component {
                   flex: 1,
                   alignItems: 'flex-start',
                   marginLeft: 55,
+                  top: 2,
                 }}>
                 {item.key.map((key, i) => {
                   return (
@@ -952,7 +936,7 @@ class ProductGrid extends Component {
                       numberOfLines={1}
                       fsSmall
                       textColor={'#000000'}
-                      style={{...Theme.ffLatoRegular15}}>
+                      style={{ ...Theme.ffLatoRegular16 }}>
                       {key.replace('_', ' ')}
                     </_Text>
                   );
@@ -970,9 +954,8 @@ class ProductGrid extends Component {
                     <_Text
                       numberOfLines={1}
                       fsPrimary
-                      //textColor={color.brandColor}
                       textColor={'#000000'}
-                      style={{...Theme.ffLatoRegular15}}>
+                      style={{ ...Theme.ffLatoRegular16 }}>
                       {value ? value : '-'}
                     </_Text>
                   );
@@ -992,7 +975,7 @@ class ProductGrid extends Component {
                   }>
                   <Image
                     source={require('../../../assets/Hertfill.png')}
-                    style={{height: hp(3.1), width: hp(3), marginTop: 2}}
+                    style={{ height: hp(3.1), width: hp(3), marginTop: 2 }}
                     resizeMode="contain"
                   />
                 </TouchableOpacity>
@@ -1004,7 +987,7 @@ class ProductGrid extends Component {
                   }>
                   <Image
                     source={require('../../../assets/Cart1.png')}
-                    style={{height: hp(3.1), width: hp(3), marginTop: 2}}
+                    style={{ height: hp(3.1), width: hp(3), marginTop: 2 }}
                     resizeMode="contain"
                   />
                 </TouchableOpacity>
@@ -1021,7 +1004,7 @@ class ProductGrid extends Component {
                   }>
                   <Image
                     source={require('../../../assets/Minus1.png')}
-                    style={{height: hp(3), width: hp(3)}}
+                    style={{ height: hp(3), width: hp(3) }}
                     resizeMode="contain"
                   />
                 </TouchableOpacity>
@@ -1041,7 +1024,7 @@ class ProductGrid extends Component {
                   }>
                   <Image
                     source={require('../../../assets/Plus1.png')}
-                    style={{height: hp(3), width: hp(3)}}
+                    style={{ height: hp(3), width: hp(3) }}
                     resizeMode="contain"
                   />
                 </TouchableOpacity>
@@ -1095,7 +1078,7 @@ class ProductGrid extends Component {
   };
 
   selectProduct = (data, id) => {
-    const {selectedItem, selectedProducts, gridData} = this.state;
+    const { selectedItem, selectedProducts, gridData } = this.state;
 
     const index = this.state.gridData.findIndex(
       item => data.product_inventory_id == item.product_inventory_id,
@@ -1104,11 +1087,11 @@ class ProductGrid extends Component {
     if (index != -1 && !gridData[index].isSelect) {
       let array = [];
       let array2 = [];
-      array = [{id}];
+      array = [{ id }];
 
       array2.push(...selectedProducts, ...array);
 
-      this.setState({selectedProducts: array2});
+      this.setState({ selectedProducts: array2 });
 
       this.state.gridData[index].isSelect = true;
 
@@ -1124,7 +1107,7 @@ class ProductGrid extends Component {
         })
         .indexOf(id);
       selectedProducts.splice(ind, 1);
-      this.setState({selectedProducts: selectedProducts});
+      this.setState({ selectedProducts: selectedProducts });
 
       selectedProductIds = selectedProducts.map(i => {
         return i.id;
@@ -1140,7 +1123,7 @@ class ProductGrid extends Component {
   };
 
   addProductToWishlist = async item => {
-    const {categoryData, page, selectedSortById} = this.state;
+    const { categoryData, page, selectedSortById } = this.state;
     let wishlistData = new FormData();
 
     wishlistData.append('product_id', item.product_inventory_id);
@@ -1153,7 +1136,7 @@ class ProductGrid extends Component {
   };
 
   addSelectedProductWishList = async () => {
-    const {categoryData, page, selectedSortById, gridData} = this.state;
+    const { categoryData, page, selectedSortById, gridData } = this.state;
 
     let wishData = new FormData();
 
@@ -1182,7 +1165,7 @@ class ProductGrid extends Component {
   };
 
   addProductToCart = async item => {
-    const {categoryData, page, selectedSortById} = this.state;
+    const { categoryData, page, selectedSortById } = this.state;
 
     const type = Platform.OS === 'ios' ? 'ios' : 'android';
 
@@ -1208,7 +1191,7 @@ class ProductGrid extends Component {
   };
 
   addSelectedProductCart = async () => {
-    const {categoryData, page, selectedSortById, gridData} = this.state;
+    const { categoryData, page, selectedSortById, gridData } = this.state;
 
     let ctData = new FormData();
 
@@ -1247,7 +1230,7 @@ class ProductGrid extends Component {
   };
 
   addProductToCartPlusOne = async item => {
-    const {categoryData, page, selectedSortById} = this.state;
+    const { categoryData, page, selectedSortById } = this.state;
 
     const type = Platform.OS === 'ios' ? 'ios' : 'android';
 
@@ -1268,7 +1251,7 @@ class ProductGrid extends Component {
   };
 
   removeProductFromCartByOne = async item => {
-    const {categoryData, page, selectedSortById} = this.state;
+    const { categoryData, page, selectedSortById } = this.state;
 
     const type = Platform.OS === 'ios' ? 'ios' : 'android';
 
@@ -1313,10 +1296,10 @@ class ProductGrid extends Component {
         }}>
         <Image
           source={require('../../../assets/gif/noData.gif')}
-          style={{height: hp(20), width: hp(20)}}
+          style={{ height: hp(20), width: hp(20) }}
           resizeMode="cover"
         />
-        <_Text style={{paddingTop: 5}}>{message}</_Text>
+        <_Text style={{ paddingTop: 5 }}>{message}</_Text>
       </View>
     );
   };
@@ -1334,7 +1317,7 @@ class ProductGrid extends Component {
   };
 
   setSortBy = item => {
-    const {categoryData, page} = this.state;
+    const { categoryData, page } = this.state;
 
     const data = new FormData();
     data.append('table', 'product_master');
@@ -1367,8 +1350,8 @@ class ProductGrid extends Component {
   };
 
   LoadMoreData = () => {
-    const {productTotalcount} = this.props;
-    const {gridData} = this.state;
+    const { productTotalcount } = this.props;
+    const { gridData } = this.state;
 
     let count = productTotalcount.count;
 
@@ -1389,8 +1372,8 @@ class ProductGrid extends Component {
   };
 
   LoadRandomData = () => {
-    const {categoryData, page, fromExclusive} = this.state;
-    const {allParameterData} = this.props;
+    const { categoryData, page, fromExclusive } = this.state;
+    const { allParameterData } = this.props;
 
     let accessCheck = allParameterData && allParameterData.access_check;
 
@@ -1442,36 +1425,36 @@ class ProductGrid extends Component {
                 alignItems: 'center',
               }}>
               <Text
-                style={{color: '#0d185c', fontSize: 18, fontWeight: 'bold'}}>
+                style={{ color: '#0d185c', fontSize: 18, fontWeight: 'bold' }}>
                 Load More
               </Text>
             </View>
           </TouchableOpacity>
         ) : null}
         {this.state.clickedLoadMore &&
-        this.props.isFetching &&
-        this.state.gridData.length >= 10 ? (
-          <View
-            style={{
-              flex: 1,
-              height: 40,
-              width: wp(100),
-              backgroundColor: '#EEF8F7',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <ActivityIndicator size="small" color={color.brandColor} />
-          </View>
-        ) : null}
+          this.props.isFetching &&
+          this.state.gridData.length >= 10 ? (
+            <View
+              style={{
+                flex: 1,
+                height: 40,
+                width: wp(100),
+                backgroundColor: '#EEF8F7',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <ActivityIndicator size="small" color={color.brandColor} />
+            </View>
+          ) : null}
       </View>
     );
   };
 
   toggleFilterModal = () => {
-    const {filterParamsData} = this.props;
+    const { filterParamsData } = this.props;
 
     if (filterParamsData && filterParamsData.length === undefined) {
-      this.setState({isFilterModalVisible: !this.state.isFilterModalVisible});
+      this.setState({ isFilterModalVisible: !this.state.isFilterModalVisible });
     } else if (filterParamsData.length === 0) {
       Toast.show({
         text: 'No data found',
@@ -1506,8 +1489,8 @@ class ProductGrid extends Component {
   };
 
   resetFilter = () => {
-    const {filterParamsData} = this.props;
-    const {isGrossWtSelected} = this.state;
+    const { filterParamsData } = this.props;
+    const { isGrossWtSelected } = this.state;
 
     if (filterParamsData && filterParamsData.length === undefined) {
       if (isGrossWtSelected && filterParamsData.gross_weight) {
@@ -1537,7 +1520,7 @@ class ProductGrid extends Component {
       isGrossWtSelected,
     } = this.state;
 
-    const {filterParamsData} = this.props;
+    const { filterParamsData } = this.props;
 
     const filterData = new FormData();
     filterData.append('table', 'product_master');
@@ -1555,7 +1538,7 @@ class ProductGrid extends Component {
 
     this.props.applyFilterProducts(filterData);
 
-    this.setState({isFilterModalVisible: false, page: 0});
+    this.setState({ isFilterModalVisible: false, page: 0 });
 
     if (filterParamsData && filterParamsData.length === undefined) {
       if (filterParamsData.gross_weight) {
@@ -1574,11 +1557,11 @@ class ProductGrid extends Component {
   };
 
   showNetWeightOrNot = () => {
-    const {sortByParamsData, filterParamsData} = this.props;
+    const { sortByParamsData, filterParamsData } = this.props;
 
     if (filterParamsData && filterParamsData.length === undefined) {
       if (filterParamsData.max_length) {
-        this.setState({isGrossWtSelected: false});
+        this.setState({ isGrossWtSelected: false });
       } else {
         Toast.show({
           text: 'No Data found',
@@ -1624,22 +1607,21 @@ class ProductGrid extends Component {
       selectedItem,
     } = this.state;
 
-    const {sortByParamsData, filterParamsData, allParameterData} = this.props;
+    const { sortByParamsData, filterParamsData, allParameterData } = this.props;
 
     let imageUrl = urls.imageUrl + 'public/backend/product_images/zoom_image/';
 
     let headerTheme = global.headerTheme;
 
     return (
-      <SafeAreaView style={{flex: 1, backgroundColor: '#FFFFFF'}}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
         <_CustomHeader
           Title={
             `(${gridData.length.toString()})` +
             ' ' +
-            `${
-              categoryData.col_name != undefined
-                ? categoryData.col_name
-                : collectionName
+            `${categoryData.col_name != undefined
+              ? categoryData.col_name
+              : collectionName
             }`
           }
           RightBtnIcon1={require('../../../assets/image/BlueIcons/Search-White.png')}
@@ -1693,7 +1675,7 @@ class ProductGrid extends Component {
                   fsHeading
                   bold
                   textColor={headerTheme ? '#' + headerTheme : '#19af81'}
-                  style={{...Theme.ffLatoRegular14}}>
+                  style={{ ...Theme.ffLatoRegular14 }}>
                   SORT
                 </_Text>
               </View>
@@ -1726,7 +1708,7 @@ class ProductGrid extends Component {
                   fsHeading
                   bold
                   textColor={headerTheme ? '#' + headerTheme : '#19af81'}
-                  style={{...Theme.ffLatoRegular14}}>
+                  style={{ ...Theme.ffLatoRegular14 }}>
                   FILTER
                 </_Text>
               </View>
@@ -1759,7 +1741,7 @@ class ProductGrid extends Component {
                   fsHeading
                   bold
                   textColor={headerTheme ? '#' + headerTheme : '#19af81'}
-                  style={{...Theme.ffLatoRegular14}}>
+                  style={{ ...Theme.ffLatoRegular14 }}>
                   CART
                 </_Text>
               </View>
@@ -1792,7 +1774,7 @@ class ProductGrid extends Component {
                   fsHeading
                   bold
                   textColor={headerTheme ? '#' + headerTheme : '#19af81'}
-                  style={{...Theme.ffLatoRegular14}}>
+                  style={{ ...Theme.ffLatoRegular14 }}>
                   WISHLIST
                 </_Text>
               </View>
@@ -1812,14 +1794,14 @@ class ProductGrid extends Component {
                 backgroundColor: isSelectPressed ? 'gold' : '#FFFFFF',
               }}>
               <Image
-                style={{height: hp(2.8), width: hp(2.8), marginRight: hp(2)}}
+                style={{ height: hp(2.8), width: hp(2.8), marginRight: hp(2) }}
                 source={require('../../../assets/Selection.png')}
               />
               <_Text
                 fsHeading
                 bold
                 textColor={headerTheme ? '#' + headerTheme : '#19af81'}
-                style={{...Theme.ffLatoRegular14}}>
+                style={{ ...Theme.ffLatoRegular14 }}>
                 SELECT
               </_Text>
             </View>
@@ -1838,14 +1820,14 @@ class ProductGrid extends Component {
                 backgroundColor: isGridPressed ? 'gold' : '#FFFFFF',
               }}>
               <Image
-                style={{height: hp(2.8), width: hp(2.8), marginRight: hp(2)}}
+                style={{ height: hp(2.8), width: hp(2.8), marginRight: hp(2) }}
                 source={require('../../../assets/grid-2.png')}
               />
               <_Text
                 fsHeading
                 bold
                 textColor={headerTheme ? '#' + headerTheme : '#19af81'}
-                style={{...Theme.ffLatoRegular14}}>
+                style={{ ...Theme.ffLatoRegular14 }}>
                 GRID
               </_Text>
             </View>
@@ -1858,14 +1840,14 @@ class ProductGrid extends Component {
             data={gridData}
             showsHorizontalScrollIndicator={true}
             showsVerticalScrollIndicator={false}
-            renderItem={({item}) => (
-              <View style={{marginBottom: hp(1), marginTop: hp(1)}}>
+            renderItem={({ item }) => (
+              <View style={{ marginVertical: hp(1), }}>
                 {this.gridView(item)}
               </View>
             )}
             numColumns={2}
             keyExtractor={item => '_' + item.product_inventory_id.toString()}
-            style={{marginTop: hp(1)}}
+            style={{ marginTop: hp(1) }}
             onEndReachedThreshold={0.4}
             onEndReached={() => this.LoadMoreData()}
           />
@@ -1876,14 +1858,14 @@ class ProductGrid extends Component {
             data={gridData}
             showsHorizontalScrollIndicator={true}
             showsVerticalScrollIndicator={false}
-            renderItem={({item}) => (
-              <View style={{marginBottom: hp(1), marginTop: hp(1)}}>
+            renderItem={({ item }) => (
+              <View style={{ marginVertical: hp(1), }}>
                 {this.gridViewFull(item)}
               </View>
             )}
             numColumns={1}
             keyExtractor={item => '#' + item.product_inventory_id.toString()}
-            style={{marginTop: hp(1)}}
+            style={{ marginTop: hp(1) }}
             onEndReachedThreshold={0.4}
             onEndReached={() => this.LoadMoreData()}
           />
@@ -1930,7 +1912,7 @@ class ProductGrid extends Component {
                   </Text>
 
                   <TouchableOpacity
-                    hitSlop={{top: 5, left: 5, bottom: 5, right: 5}}
+                    hitSlop={{ top: 5, left: 5, bottom: 5, right: 5 }}
                     onPress={() => this.closeSortByModal()}>
                     <Image
                       style={{
@@ -1958,11 +1940,11 @@ class ProductGrid extends Component {
                   showsHorizontalScrollIndicator={false}
                   showsVerticalScrollIndicator={false}
                   ItemSeparatorComponent={this.seperator}
-                  renderItem={({item}) => (
+                  renderItem={({ item }) => (
                     <TouchableOpacity
-                      hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
+                      hitSlop={{ top: 20, left: 20, bottom: 20, right: 20 }}
                       onPress={() => this.setSortBy(item)}>
-                      <View style={{width: wp(100), flexDirection: 'row'}}>
+                      <View style={{ width: wp(100), flexDirection: 'row' }}>
                         <View
                           style={{
                             paddingVertical: 12,
@@ -2028,25 +2010,25 @@ class ProductGrid extends Component {
           <Modal
             isVisible={this.state.isFilterModalVisible}
             transparent={true}
-            onRequestClose={() => this.setState({isFilterModalVisible: false})}
-            onBackdropPress={() => this.setState({isFilterModalVisible: false})}
-            style={{margin: 0}}>
+            onRequestClose={() => this.setState({ isFilterModalVisible: false })}
+            onBackdropPress={() => this.setState({ isFilterModalVisible: false })}
+            style={{ margin: 0 }}>
             <TouchableWithoutFeedback
-              style={{flex: 1}}
-              onPress={() => this.setState({isFilterModalVisible: false})}>
+              style={{ flex: 1 }}
+              onPress={() => this.setState({ isFilterModalVisible: false })}>
               <KeyboardAvoidingView
                 keyboardVerticalOffset={Platform.OS == 'android' ? 0 : 100}
                 behavior="height"
-                style={{flex: 1}}>
+                style={{ flex: 1 }}>
                 <View style={styles.mainContainer}>
                   <TouchableWithoutFeedback
-                    style={{flex: 1}}
+                    style={{ flex: 1 }}
                     onPress={() => null}>
                     <View style={styles.content}>
                       <View style={styles.filterContainer}>
                         <View style={styles.filter}>
                           <Image
-                            style={[styles.filterImg, {top: 3}]}
+                            style={[styles.filterImg, { top: 3 }]}
                             source={require('../../../assets/filter.png')}
                           />
                           <Text
@@ -2061,7 +2043,7 @@ class ProductGrid extends Component {
                         </View>
                         <View>
                           <TouchableOpacity onPress={() => this.resetFilter()}>
-                            <Text style={{fontSize: 20, color: 'red'}}>
+                            <Text style={{ fontSize: 20, color: 'red' }}>
                               Reset
                             </Text>
                           </TouchableOpacity>
@@ -2069,7 +2051,7 @@ class ProductGrid extends Component {
 
                         <View>
                           <TouchableOpacity onPress={() => this.applyFilter()}>
-                            <Text style={{fontSize: 20, color: '#19af81'}}>
+                            <Text style={{ fontSize: 20, color: '#19af81' }}>
                               Apply
                             </Text>
                           </TouchableOpacity>
@@ -2093,7 +2075,7 @@ class ProductGrid extends Component {
                             }}>
                             <TouchableOpacity
                               onPress={() =>
-                                this.setState({isGrossWtSelected: true})
+                                this.setState({ isGrossWtSelected: true })
                               }>
                               <Text style={styles.toText}>Net Weight</Text>
                             </TouchableOpacity>
@@ -2135,8 +2117,8 @@ class ProductGrid extends Component {
                       {this.state.isGrossWtSelected ? (
                         <>
                           <View style={styles.sliderContainer}>
-                            <View style={{flex: 1}}></View>
-                            <View style={{flex: 2}}>
+                            <View style={{ flex: 1 }}></View>
+                            <View style={{ flex: 2 }}>
                               {filterParamsData && (
                                 <View>
                                   <RangeSlider
@@ -2148,7 +2130,7 @@ class ProductGrid extends Component {
                                 </View>
                               )}
 
-                              <View style={{marginTop: 25}}>
+                              <View style={{ marginTop: 25 }}>
                                 <Text style={styles.toText}>From</Text>
                                 <TextInput
                                   editable={false}
@@ -2158,7 +2140,7 @@ class ProductGrid extends Component {
                                   placeholderTextColor="#000"
                                 />
                               </View>
-                              <View style={{marginTop: 25, marginBottom: 15}}>
+                              <View style={{ marginTop: 25, marginBottom: 15 }}>
                                 <Text style={styles.toText}>To</Text>
                                 <TextInput
                                   editable={false}
@@ -2172,48 +2154,48 @@ class ProductGrid extends Component {
                           </View>
                         </>
                       ) : (
-                        <>
-                          <View style={styles.sliderContainer}>
-                            <View style={{flex: 1}}></View>
-                            <View style={{flex: 2}}>
-                              {filterParamsData && (
-                                <View>
-                                  <LengthSlider
-                                    data={filterParamsData}
-                                    setsliderValuesLength={
-                                      this.setFromToSliderValuesLength
-                                    }
-                                    value3={fromValue1}
-                                    value4={toValue1}
+                          <>
+                            <View style={styles.sliderContainer}>
+                              <View style={{ flex: 1 }}></View>
+                              <View style={{ flex: 2 }}>
+                                {filterParamsData && (
+                                  <View>
+                                    <LengthSlider
+                                      data={filterParamsData}
+                                      setsliderValuesLength={
+                                        this.setFromToSliderValuesLength
+                                      }
+                                      value3={fromValue1}
+                                      value4={toValue1}
+                                    />
+                                  </View>
+                                )}
+                                <View style={{ marginTop: 25 }}>
+                                  <Text style={styles.toText}>From</Text>
+                                  <TextInput
+                                    editable={false}
+                                    style={styles.textInputStyle}
+                                    //value={fromValue1}
+                                    value={String(fromValue1)}
+                                    placeholder="0.000"
+                                    placeholderTextColor="#000"
                                   />
                                 </View>
-                              )}
-                              <View style={{marginTop: 25}}>
-                                <Text style={styles.toText}>From</Text>
-                                <TextInput
-                                  editable={false}
-                                  style={styles.textInputStyle}
-                                  //value={fromValue1}
-                                  value={String(fromValue1)}
-                                  placeholder="0.000"
-                                  placeholderTextColor="#000"
-                                />
-                              </View>
-                              <View style={{marginTop: 25, marginBottom: 15}}>
-                                <Text style={styles.toText}>To</Text>
-                                <TextInput
-                                  editable={false}
-                                  style={styles.textInputStyle}
-                                  // value={toValue1}
-                                  value={String(toValue1)}
-                                  placeholder="0.000"
-                                  placeholderTextColor="#000"
-                                />
+                                <View style={{ marginTop: 25, marginBottom: 15 }}>
+                                  <Text style={styles.toText}>To</Text>
+                                  <TextInput
+                                    editable={false}
+                                    style={styles.textInputStyle}
+                                    // value={toValue1}
+                                    value={String(toValue1)}
+                                    placeholder="0.000"
+                                    placeholderTextColor="#000"
+                                  />
+                                </View>
                               </View>
                             </View>
-                          </View>
-                        </>
-                      )}
+                          </>
+                        )}
 
                       <SafeAreaView />
                     </View>
@@ -2229,16 +2211,16 @@ class ProductGrid extends Component {
         {this.state.isProductImageModalVisibel && (
           <View>
             <Modal
-              style={{justifyContent: 'center'}}
+              style={{ justifyContent: 'center' }}
               isVisible={this.state.isProductImageModalVisibel}
               onRequestClose={() =>
-                this.setState({isProductImageModalVisibel: false})
+                this.setState({ isProductImageModalVisibel: false })
               }
               onBackdropPress={() =>
-                this.setState({isProductImageModalVisibel: false})
+                this.setState({ isProductImageModalVisibel: false })
               }
               onBackButtonPress={() =>
-                this.setState({isProductImageModalVisibel: false})
+                this.setState({ isProductImageModalVisibel: false })
               }>
               <SafeAreaView>
                 <View
@@ -2249,7 +2231,7 @@ class ProductGrid extends Component {
                     justifyContent: 'center',
                     borderRadius: 10,
                   }}>
-                  <_Text fsMedium style={{marginTop: hp(0.5)}}>
+                  <_Text fsMedium style={{ marginTop: hp(0.5) }}>
                     Code: {productImageToBeDisplayed.collection_sku_code}
                   </_Text>
                   <View
@@ -2494,13 +2476,13 @@ class RangeSlider extends React.Component {
   }
 
   multiSliderValuesChange = values => {
-    this.setState({values});
+    this.setState({ values });
     this.props.setsliderValues(values);
   };
 
   render() {
-    const {data, value1, value2} = this.props;
-    const {values} = this.state;
+    const { data, value1, value2 } = this.props;
+    const { values } = this.state;
 
     if (data) {
       var min = data.gross_weight[0].min_gross_weight;
@@ -2510,7 +2492,7 @@ class RangeSlider extends React.Component {
     return (
       <View>
         {data ? (
-          <View style={{marginLeft: 10}}>
+          <View style={{ marginLeft: 10 }}>
             <MultiSlider
               values={[values[0], values[1]]}
               sliderLength={wp(60)}
@@ -2518,11 +2500,11 @@ class RangeSlider extends React.Component {
               min={parseFloat(values[0])}
               max={parseFloat(values[1])}
               step={1}
-              selectedStyle={{backgroundColor: '#19af81'}}
-              unselectedStyle={{backgroundColor: 'silver'}}
-              trackStyle={{height: 4}}
+              selectedStyle={{ backgroundColor: color.black }}
+              unselectedStyle={{ backgroundColor: 'silver' }}
+              trackStyle={{ height: 4 }}
               markerStyle={{
-                backgroundColor: '#19af81',
+                backgroundColor: color.black,
                 width: 26,
                 height: 26,
                 borderRadius: 13,
@@ -2535,10 +2517,10 @@ class RangeSlider extends React.Component {
                 marginHorizontal: 10,
               }}>
               {values && (
-                <Text style={{fontSize: 16}}>{this.state.values[0]}</Text>
+                <Text style={{ fontSize: 16 }}>{this.state.values[0]}</Text>
               )}
               {values && (
-                <Text style={{fontSize: 16}}>{this.state.values[1]}</Text>
+                <Text style={{ fontSize: 16 }}>{this.state.values[1]}</Text>
               )}
             </View>
           </View>
@@ -2585,13 +2567,13 @@ class LengthSlider extends React.Component {
   }
 
   multiSliderValuesChangeTwo = values => {
-    this.setState({values});
+    this.setState({ values });
     this.props.setsliderValuesLength(values);
   };
 
   render() {
-    const {data} = this.props;
-    const {values} = this.state;
+    const { data } = this.props;
+    const { values } = this.state;
     if (data) {
       var min = data.max_length[0].min_length;
       var max = data.max_length[0].max_length;
@@ -2600,7 +2582,7 @@ class LengthSlider extends React.Component {
     return (
       <View>
         {data ? (
-          <View style={{marginLeft: 10}}>
+          <View style={{ marginLeft: 10 }}>
             <MultiSlider
               values={[values[0], values[1]]}
               sliderLength={wp(60)}
@@ -2608,11 +2590,11 @@ class LengthSlider extends React.Component {
               min={parseFloat(values[0])}
               max={parseFloat(values[1])}
               step={1}
-              selectedStyle={{backgroundColor: '#19af81'}}
-              unselectedStyle={{backgroundColor: 'silver'}}
-              trackStyle={{height: 4}}
+              selectedStyle={{ backgroundColor: color.black }}
+              unselectedStyle={{ backgroundColor: 'silver' }}
+              trackStyle={{ height: 4 }}
               markerStyle={{
-                backgroundColor: '#19af81',
+                backgroundColor: color.black,
                 width: 26,
                 height: 26,
                 borderRadius: 13,
@@ -2625,12 +2607,12 @@ class LengthSlider extends React.Component {
                 marginHorizontal: 10,
               }}>
               {values && (
-                <Text style={{fontSize: 16}}>
+                <Text style={{ fontSize: 16 }}>
                   {parseFloat(this.state.values[0])}
                 </Text>
               )}
               {values && (
-                <Text style={{fontSize: 16}}>
+                <Text style={{ fontSize: 16 }}>
                   {parseFloat(this.state.values[1])}
                 </Text>
               )}

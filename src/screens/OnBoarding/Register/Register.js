@@ -1,4 +1,4 @@
-import React, {useState, Component} from 'react';
+import React, { useState, Component } from 'react';
 import {
   View,
   Text,
@@ -24,9 +24,9 @@ import {
   Toast,
 } from 'native-base';
 import IconPack from '@login/IconPack';
-import {color} from '@values/colors';
-import {OTPregisterRequest} from '@register/RegisterAction';
-import {connect} from 'react-redux';
+import { color } from '@values/colors';
+import { OTPregisterRequest } from '@register/RegisterAction';
+import { connect } from 'react-redux';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -40,7 +40,7 @@ import {
   validateUserName,
 } from '@values/validate';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 class Register extends React.Component {
   constructor(props) {
@@ -67,7 +67,7 @@ class Register extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const {successRegisterVersion, errorRegisterVersion} = nextProps;
+    const { successRegisterVersion, errorRegisterVersion } = nextProps;
     let newState = null;
 
     if (successRegisterVersion > prevState.successRegisterVersion) {
@@ -86,7 +86,7 @@ class Register extends React.Component {
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    const {OTPregisterData} = this.props;
+    const { OTPregisterData } = this.props;
 
     if (this.state.successRegisterVersion > prevState.successRegisterVersion) {
       if (OTPregisterData.otp != '') {
@@ -108,7 +108,7 @@ class Register extends React.Component {
     }
   }
 
-  onInputChanged = ({inputKey, isValid, value}) => {
+  onInputChanged = ({ inputKey, isValid, value }) => {
     let validationKey = '';
     switch (inputKey) {
       case 'fullName':
@@ -216,7 +216,7 @@ class Register extends React.Component {
   };
 
   render() {
-    const {fullName, emailId, organisation, mobileNo, password} = this.state;
+    const { fullName, emailId, organisation, mobileNo, password } = this.state;
 
     return (
       <Container>
@@ -228,7 +228,7 @@ class Register extends React.Component {
                 ios: -100,
                 android: 500,
               })}
-              style={{flex: 1}}>
+              style={{ flex: 1 }}>
               <Header style={styles.headerStyle}>
                 <Left>
                   <TouchableOpacity
@@ -242,6 +242,7 @@ class Register extends React.Component {
                 <Body />
                 <Right />
               </Header>
+
               <ScrollView
                 showsVerticalScrollIndicator={false}
                 keyboardShouldPersistTaps={'always'}>
@@ -252,7 +253,13 @@ class Register extends React.Component {
                       marginTop: hp(4),
                       height: hp(15),
                     }}>
-                    <Text
+
+                    <Image
+                      source={require('../../../assets/Home-Icon.png')}
+                      style={{ height: 100, width: 100, }}
+                      resizeMode={'contain'}
+                    />
+                    {/* <Text
                       style={{
                         fontFamily: 'Lato-Bold',
                         textAlign: 'center',
@@ -261,7 +268,7 @@ class Register extends React.Component {
                         color: '#fff',
                       }}>
                       SUNBERA
-                    </Text>
+                    </Text> */}
                   </View>
                   <LoginFields
                     value={fullName ? fullName : null}
@@ -360,7 +367,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
-  flex: {flex: 1},
+  flex: { flex: 1 },
   buttonStyle: {
     marginTop: 30,
     marginBottom: 50,
@@ -397,7 +404,7 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  {OTPregisterRequest},
+  { OTPregisterRequest },
 )(Register);
 
 class LoginFields extends Component {
@@ -448,8 +455,8 @@ class LoginFields extends Component {
           break;
       }
     }
-    this.setState({isValid, text});
-    onChangeText && onChangeText({inputKey, isValid, value: text, inputId});
+    this.setState({ isValid, text });
+    onChangeText && onChangeText({ inputKey, isValid, value: text, inputId });
   };
 
   setSecureInput = secureInput => {
@@ -475,7 +482,7 @@ class LoginFields extends Component {
       textInputRef,
       onSubmitEditing,
     } = this.props;
-    const {isPasswordField, secureInput} = this.state;
+    const { isPasswordField, secureInput } = this.state;
 
     return (
       <View
@@ -575,7 +582,7 @@ const loginFieldsStyles = StyleSheet.create({
 });
 
 //-------------ActionButtonCommon-----------//
-const ActionButtonRounded = ({title, onButonPress, containerStyle}) => {
+const ActionButtonRounded = ({ title, onButonPress, containerStyle }) => {
   return (
     <TouchableOpacity
       onPress={() => {

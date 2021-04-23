@@ -39,13 +39,12 @@ export default class SubCategoryList extends Component {
       <TouchableOpacity onPress={() => this.getProductGridOrNot(item)}>
         <Animatable.View
           animation="flipInX"
-          style={{ paddingTop: hp(0.5), paddingBottom: hp(0.5) }}>
+          style={{ paddingVertical: hp(1), }}>
           <View
             style={{
               flexDirection: 'row',
               flex: 1,
-              marginLeft: hp(2),
-              marginRight: hp(2),
+              marginHorizontal: hp(2),
             }}>
             <View style={{ flex: 0.25, justifyContent: 'flex-start' }}>
               <Image
@@ -56,7 +55,7 @@ export default class SubCategoryList extends Component {
                   borderWidth: 0.4,
                   borderColor: color.gray,
                 }}
-                source={{ uri: baseUrl + item.image_name }}
+                source={item.image_name != '' ? { uri: baseUrl + item.image_name } : IconPack.APP_LOGO}
                 defaultSource={IconPack.APP_LOGO}
                 resizeMode='contain'
               />
@@ -71,9 +70,8 @@ export default class SubCategoryList extends Component {
               <_Text
                 numberOfLines={2}
                 fwSmall
-                //textColor={color.white}
                 fsMedium
-                style={{ left: 5, marginRight: hp(3) }}>
+                style={{ marginRight: hp(1) }}>
                 {item.col_name && capitalizeFirstLetter(item.col_name)}
               </_Text>
             </View>
@@ -81,8 +79,8 @@ export default class SubCategoryList extends Component {
           <View
             style={{
               paddingTop: hp(0.8),
-              marginLeft: wp(22),
-              marginRight: wp(3),
+              marginLeft: wp(24),
+              marginRight: wp(1),
               alignSelf: 'stretch',
               borderBottomColor: '#D3D3D3',
               borderBottomWidth: 1,
@@ -94,12 +92,9 @@ export default class SubCategoryList extends Component {
   };
 
   getProductGridOrNot = data => {
-    console.warn('data==', data);
     if (data.subcategory.length === 0) {
-      console.warn('in if');
       this.props.navigation.navigate('ProductGrid', { gridData: data });
     } else if (data.subcategory.length > 0) {
-      console.warn('in else');
       this.props.navigation.push('SubCategoryList', { subcategory: data });
     }
   };
@@ -113,14 +108,8 @@ export default class SubCategoryList extends Component {
           RightBtnIcon2={require('../../../assets/shopping-cart.png')}
           RightBtnIcon1={require('../../../assets/image/BlueIcons/Notification-White.png')}
           LeftBtnPress={() => this.props.navigation.goBack()}
-          RightBtnPressTwo={() =>
-            this.props.navigation.navigate('CartContainer', {
-              fromProductGrid: true,
-            })
-          }
-          RightBtnPressOne={() =>
-            this.props.navigation.navigate('Notification')
-          }
+          RightBtnPressTwo={() => this.props.navigation.navigate('CartContainer', { fromProductGrid: true, })}
+          RightBtnPressOne={() => this.props.navigation.navigate('Notification')}
           rightIconHeight2={hp(3.5)}
           backgroundColor={color.green}
         />

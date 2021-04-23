@@ -24,85 +24,60 @@ export default class _CustomHeader extends Component {
           hasTabs
           style={{
             width: wp(100),
-            height: hp(7.4),
-            paddingVertical: Platform.OS === 'ios' ? hp(2) : 2,
-            backgroundColor: headerTheme
-              ? '#' + headerTheme
-              : this.props.backgroundColor,
+            height: hp(7),
+            alignItems: 'center',
+            backgroundColor: headerTheme ? '#' + headerTheme : this.props.backgroundColor,
           }}>
           <Left style={{ flex: 0.25 }}>
             <TouchableOpacity
-              onPress={() => {
-                this.props.LeftBtnPress();
-              }}
+              onPress={() => { this.props.LeftBtnPress(); }}
               hitSlop={{ top: 15, left: 15, right: 120, bottom: 15 }}>
               <Image
-                source={
-                  this.props.LeftBtnIcon
-                    ? this.props.LeftBtnIcon
-                    : require('../../assets/image/back.png')
-                }
+                source={this.props.LeftBtnIcon ? this.props.LeftBtnIcon : require('../../assets/image/back.png')}
                 style={{
-                  top: 2,
-                  height: this.props.height ? this.props.height : hp(2.6),
+                  height: this.props.height ? this.props.height : hp(2.5),
                   width: this.props.width ? this.props.width : hp(2.5),
                 }}
+                resizeMode='contain'
               />
             </TouchableOpacity>
           </Left>
 
           {this.props.Title && (
-            <Body style={{ flex: 1 }}>
+            <Body style={{ flex: 2 }}>
               <Title
                 style={{
                   color: '#ffffff',
-                  fontSize: hp(2.5),
+                  fontSize: 20,
                   fontFamily: 'Lato-Bold',
                   letterSpacing: 1,
                 }}>
                 {this.props.Title ? this.props.Title : ''}
               </Title>
-              {this.props.Subtitle && (
-                <Subtitle style={{ color: color.black, fontSize: hp(1.5) }}>
-                  {this.props.Subtitle ? this.props.Subtitle : ''}
-                </Subtitle>
-              )}
             </Body>
           )}
 
           <Right style={{ flex: 0.65 }}>
             {this.props.RightBtnIcon1 && (
-              <Button
-                style={{ marginTop: 8 }}
-                transparent
+              <Button transparent
                 onPress={() => this.props.RightBtnPressOne()}>
                 <Image
                   source={this.props.RightBtnIcon1}
                   style={{
-                    height: this.props.rightIconHeight1
-                      ? this.props.rightIconHeight1
-                      : hp(3.2),
-                    width: this.props.rightIconWidth1
-                      ? this.props.rightIconWidth1
-                      : hp(3.2),
+                    height: this.props.rightIconHeight1 ? this.props.rightIconHeight1 : hp(3.2),
+                    width: this.props.rightIconWidth1 ? this.props.rightIconWidth1 : hp(3.2),
                   }}
                 />
               </Button>
             )}
             {this.props.RightBtnIcon2 && (
-              <Button
-                style={{ marginTop: 8 }}
-                transparent
+              <Button transparent
                 onPress={() => this.props.RightBtnPressTwo()}>
                 <Image
                   source={this.props.RightBtnIcon2}
                   style={{
-                    height: this.props.rightIconHeight2
-                      ? this.props.rightIconHeight2
-                      : hp(3.2),
-                    width: this.props.rightIconHeight2
-                      ? this.props.rightIconHeight2
-                      : hp(3.2),
+                    height: this.props.rightIconHeight2 ? this.props.rightIconHeight2 : hp(3.2),
+                    width: this.props.rightIconHeight2 ? this.props.rightIconHeight2 : hp(3.2),
                   }}
                 />
               </Button>
@@ -116,12 +91,7 @@ export default class _CustomHeader extends Component {
             )}
           </Right>
         </Header>
-        <View
-          style={{
-            borderBottomWidth: hp(0.2),
-            borderBottomColor: '#DDDDDD',
-          }}
-        />
+
       </View>
     );
   }

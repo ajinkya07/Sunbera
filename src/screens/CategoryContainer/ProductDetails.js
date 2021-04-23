@@ -36,7 +36,8 @@ import _CustomHeader from '@customHeader/_CustomHeader';
 import { parseInt } from 'lodash';
 import { getTotalCartCount } from '@homepage/HomePageAction';
 import Theme from '../../values/Theme';
-const qs = require('query-string');
+import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
+import Gallery from 'react-native-image-gallery';
 
 var userId = '';
 
@@ -256,35 +257,19 @@ class ProductDetails extends React.Component {
 
   renderScreen = (data, k) => {
     const { productDetailsStateData } = this.state;
-    let url2 =
-      urls.imageUrl +
-      (productDetailsStateData !== undefined &&
-        productDetailsStateData.zoom_image);
+
+    let url2 = urls.imageUrl + (productDetailsStateData !== undefined && productDetailsStateData.zoom_image);
 
     return (
       <TouchableOpacity
-        onPress={() =>
-          this.props.navigation.navigate('BannerImage', {
-            bannerDataImagePath: productDetailsStateData,
-            baseUrl: url2,
-          })
-        }>
+        onPress={() => this.props.navigation.navigate('BannerImage', { bannerDataImagePath: productDetailsStateData, baseUrl: url2, })}>
         <View key={k}>
-          {/* <FastImage
-            style={{height: hp(30), width: wp(100)}}
-            source={{
-              uri: url2 + data,
-            }}
-            resizeMode={FastImage.resizeMode.cover}
-          /> */}
-
           <Image
             source={{ uri: url2 + data }}
-            resizeMode='stretch'
+            resizeMode='contain'
             style={{ height: hp(33), width: wp(100) }}
             defaultSource={IconPack.APP_LOGO}
           />
-
         </View>
       </TouchableOpacity>
     );
@@ -302,9 +287,7 @@ class ProductDetails extends React.Component {
             removeClippedSubviews={false}
             style={{ flexGrow: 1 }}
             autoplayTimeout={10}
-            ref={swiper => {
-              this.swiper = swiper;
-            }}
+            ref={swiper => { this.swiper = swiper; }}
             index={this.state.currentPage}
             autoplay={false}
             showsPagination={true}
@@ -314,9 +297,9 @@ class ProductDetails extends React.Component {
               <View
                 style={{
                   backgroundColor: 'gray',
-                  width: 8,
-                  height: 8,
-                  borderRadius: 4,
+                  width: 6,
+                  height: 6,
+                  borderRadius: 3,
                   marginLeft: 3,
                   marginRight: 3,
                   top: 10,
@@ -326,10 +309,10 @@ class ProductDetails extends React.Component {
             activeDot={
               <View
                 style={{
-                  backgroundColor: '#19af81',
-                  width: 10,
-                  height: 10,
-                  borderRadius: 5,
+                  backgroundColor: color.black,
+                  width: 8,
+                  height: 8,
+                  borderRadius: 4,
                   marginLeft: 3,
                   marginRight: 3,
                   top: 10,
@@ -347,6 +330,36 @@ class ProductDetails extends React.Component {
       </View>
     );
   };
+
+
+  carausalViewNew = item => {
+    return (
+      <View style={{ height: hp(33), width: wp(100), }}>
+        {item ? (
+          <Swiper
+            removeClippedSubviews={false}
+            style={{ flexGrow: 1 }}
+            ref={swiper => { this.swiper = swiper }}
+            index={this.state.currentPage}
+            autoplay={false}
+            loop={false}
+            showsPagination={true}
+            dot={<View style={{ backgroundColor: 'gray', width: 6, height: 6, borderRadius: 3, marginHorizontal: 3, }} />}
+            activeDot={<View style={{ backgroundColor: color.black, width: 8, height: 8, borderRadius: 4, marginHorizontal: 3 }} />}
+            onIndexChanged={page => this.setCurrentPage(page)}
+          >
+            {item.image_name.map((page, index) =>
+              this.renderScreen(page, index),
+            )}
+          </Swiper>
+        ) : (
+            this.renderLoader()
+          )}
+      </View>
+    );
+  };
+
+
 
   noDataFound = () => {
     return (
@@ -588,9 +601,8 @@ class ProductDetails extends React.Component {
             >
               <SafeAreaView style={styles.safeAreaViewStyle}>
                 <View style={{ flex: 1 }}>
-                  <View>
-                    {this.carausalView(productDetailsStateData)}
-                  </View>
+
+                  {this.carausalViewNew(productDetailsStateData)}
 
                   <View style={{
                     backgroundColor: headerTheme ? '#' + headerTheme : '#D7D7D7',

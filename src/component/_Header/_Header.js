@@ -33,46 +33,41 @@ class _Header extends Component {
       <Header
         style={{
           width: wp(100),
-          height: hp(7.5),
-          paddingVertical: Platform.OS === 'ios' ? hp(2) : 2,
+          height: hp(7),
+          alignItems: 'center',
           backgroundColor: headerColor ? '#' + headerColor : '#fff',
         }}>
-        <Left style={{}}>
-          <Button transparent>
-            {showBack ? (
-              <Image
-                style={{ height: hp(2.5), width: hp(2.5) }}
-                source={require('../../assets/image/Account/back_button.png')}
-              />
-            ) : (
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginVertical: 2,
-                    // width: 162,
-                  }}>
-                  <Image
-                    source={require('../../assets/Home-Icon.png')}
-                    style={{ height: 38, width: 38 }}
-                    resizeMode={'contain'}
-                  />
+        <Button transparent>
+          {showBack ? (
+            <Image
+              style={{ height: hp(2.5), width: hp(2.5) }}
+              source={require('../../assets/image/Account/back_button.png')}
+            />
+          ) : (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center', left: -5
+                }}>
+                <Image
+                  source={require('../../assets/Home-Icon.png')}
+                  style={{ height: 38, width: 38 }}
+                  resizeMode={'contain'}
+                />
 
-                  <Text
-                    style={{
-                      fontSize: 20,
-                      fontFamily: 'Roboto',
-                      fontWeight: 'bold',
-                      left: 5,
-                      color: '#fff',
-                    }}>
-                    SUNBERA
+                <Text
+                  style={{
+                    fontSize: 20,
+                    fontFamily: 'Lato-Bold',
+                    left: 5, letterSpacing: 1,
+                    color: '#fff',
+                  }}>
+                  SUNBERA
                 </Text>
-                </View>
-              )}
-          </Button>
-        </Left>
+              </View>
+            )}
+        </Button>
 
         {/* right side operation */}
 
@@ -82,6 +77,7 @@ class _Header extends Component {
               <Image
                 style={{ height: hp(3.2), width: hp(3.2) }}
                 source={require('../../assets/image/BlueIcons/Search-White.png')}
+                resizeMode={'contain'}
               />
             </Button>
           ) : null}
@@ -89,8 +85,9 @@ class _Header extends Component {
           {showCalling ? (
             <Button transparent onPress={onCallingPress}>
               <Image
-                style={{ height: hp(3.5), width: hp(3.5) }}
+                style={{ height: hp(3.2), width: hp(3.2) }}
                 source={require('../../assets/image/BlueIcons/Mobile.png')}
+                resizeMode={'contain'}
               />
             </Button>
           ) : null}
@@ -98,9 +95,9 @@ class _Header extends Component {
           {showNotification ? (
             <Button transparent onPress={onNotificationPress}>
               <Image
-                resizeMode={'cover'}
-                style={{ height: hp(3.6), width: hp(3.6), marginRight: wp(0) }}
+                style={{ height: hp(3.2), width: hp(3.2), }}
                 source={require('../../assets/image/BlueIcons/Notification-White.png')}
+                resizeMode={'contain'}
               />
             </Button>
           ) : null}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sunbera.iml" filepath="$PROJECT_DIR$/.idea/modules/Sunbera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Sunbera.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Sunbera.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/625540347/Sunbera.react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/625540347/Sunbera.react-native-community_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1169026542/Sunbera.react-native-community_checkbox.iml" filepath="$PROJECT_DIR$/.idea/modules/-1169026542/Sunbera.react-native-community_checkbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-505142553/Sunbera.react-native-community_clipboard.iml" filepath="$PROJECT_DIR$/.idea/modules/-505142553/Sunbera.react-native-community_clipboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1259822776/Sunbera.react-native-community_masked-view.iml" filepath="$PROJECT_DIR$/.idea/modules/1259822776/Sunbera.react-native-community_masked-view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/151853425/Sunbera.react-native-fast-image.iml" filepath="$PROJECT_DIR$/.idea/modules/151853425/Sunbera.react-native-fast-image.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1395247042/Sunbera.react-native-firebase_app.iml" filepath="$PROJECT_DIR$/.idea/modules/1395247042/Sunbera.react-native-firebase_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1691960091/Sunbera.react-native-firebase_messaging.iml" filepath="$PROJECT_DIR$/.idea/modules/-1691960091/Sunbera.react-native-firebase_messaging.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1393228513/Sunbera.react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/-1393228513/Sunbera.react-native-gesture-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1242379758/Sunbera.react-native-image-crop-picker.iml" filepath="$PROJECT_DIR$/.idea/modules/-1242379758/Sunbera.react-native-image-crop-picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2002940774/Sunbera.react-native-picker_picker.iml" filepath="$PROJECT_DIR$/.idea/modules/2002940774/Sunbera.react-native-picker_picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/793300183/Sunbera.react-native-push-notification.iml" filepath="$PROJECT_DIR$/.idea/modules/793300183/Sunbera.react-native-push-notification.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1761255837/Sunbera.react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/1761255837/Sunbera.react-native-reanimated.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1788563912/Sunbera.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/1788563912/Sunbera.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1639238624/Sunbera.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/1639238624/Sunbera.react-native-screens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/755376248/Sunbera.react-native-share.iml" filepath="$PROJECT_DIR$/.idea/modules/755376248/Sunbera.react-native-share.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1085869269/Sunbera.react-native-splash-screen.iml" filepath="$PROJECT_DIR$/.idea/modules/-1085869269/Sunbera.react-native-splash-screen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1252966633/Sunbera.react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/-1252966633/Sunbera.react-native-vector-icons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/898181202/Sunbera.react-native-webview.iml" filepath="$PROJECT_DIR$/.idea/modules/898181202/Sunbera.react-native-webview.iml" />
+    </modules>
+  </component>
+</project>

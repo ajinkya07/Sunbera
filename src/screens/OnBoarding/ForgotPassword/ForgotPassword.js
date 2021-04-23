@@ -1,4 +1,4 @@
-import React, {useState, Component, useRef} from 'react';
+import React, { useState, Component, useRef } from 'react';
 import {
   View,
   Text,
@@ -24,14 +24,14 @@ import {
   Toast,
 } from 'native-base';
 import IconPack from '@login/IconPack';
-const {width, height} = Dimensions.get('window');
-import {sendOtpRequest} from '@forgotPassword/ForgotAction';
-import {connect} from 'react-redux';
+const { width, height } = Dimensions.get('window');
+import { sendOtpRequest } from '@forgotPassword/ForgotAction';
+import { connect } from 'react-redux';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {color} from '@values/colors';
+import { color } from '@values/colors';
 import {
   validateEmail,
   validateMobNum,
@@ -56,7 +56,7 @@ class ForgotPassword extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const {successForgotVersion, errorForgotVersion} = nextProps;
+    const { successForgotVersion, errorForgotVersion } = nextProps;
     let newState = null;
 
     if (successForgotVersion > prevState.successForgotVersion) {
@@ -75,7 +75,7 @@ class ForgotPassword extends React.Component {
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    const {forgotData} = this.props;
+    const { forgotData } = this.props;
 
     if (this.state.successForgotVersion > prevState.successForgotVersion) {
       if (forgotData.otp != '') {
@@ -94,7 +94,7 @@ class ForgotPassword extends React.Component {
     }
   }
 
-  onInputChanged = ({inputKey, isValid, value}) => {
+  onInputChanged = ({ inputKey, isValid, value }) => {
     let validationKey = '';
     switch (inputKey) {
       case 'mobileNo':
@@ -115,7 +115,7 @@ class ForgotPassword extends React.Component {
   };
 
   sendOtp = () => {
-    const {password, isPassword, mobileNo, isMobile} = this.state;
+    const { password, isPassword, mobileNo, isMobile } = this.state;
 
     let error = '';
     try {
@@ -163,7 +163,7 @@ class ForgotPassword extends React.Component {
   };
 
   render() {
-    const {mobileNo, password} = this.state;
+    const { mobileNo, password } = this.state;
 
     return (
       <Container>
@@ -175,7 +175,7 @@ class ForgotPassword extends React.Component {
                 ios: -90,
                 android: 0,
               })}
-              style={{flex: 1}}>
+              style={{ flex: 1 }}>
               <Header style={styles.headerStyle}>
                 <Left>
                   <TouchableOpacity
@@ -193,14 +193,20 @@ class ForgotPassword extends React.Component {
                 showsVerticalScrollIndicator={false}
                 keyboardShouldPersistTaps={'always'}>
                 <View style={styles.viewContainer}>
+
                   <View
                     style={{
                       alignItems: 'center',
-                      marginTop: hp(3),
-                      height: hp(19),
+                      marginTop: hp(2),
+                      height: hp(20),
                     }}>
-                    <View style={{marginBottom: hp(5)}}>
-                      <Text
+                    <View style={{ marginBottom: hp(4) }}>
+                      <Image
+                        source={require('../../../assets/Home-Icon.png')}
+                        style={{ height: 100, width: 100, }}
+                        resizeMode={'contain'}
+                      />
+                      {/* <Text
                         style={{
                           fontFamily: 'Lato-Bold',
                           textAlign: 'center',
@@ -209,7 +215,7 @@ class ForgotPassword extends React.Component {
                           color: '#fff',
                         }}>
                         SUNBERA
-                      </Text>
+                      </Text> */}
                     </View>
 
                     <Text
@@ -224,7 +230,7 @@ class ForgotPassword extends React.Component {
                     </Text>
                   </View>
 
-                  <View style={{marginTop: hp(3)}}>
+                  <View style={{ marginTop: hp(4) }}>
                     <LoginFields
                       value={mobileNo ? mobileNo : null}
                       type="mobileNo"
@@ -282,7 +288,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
-  flex: {flex: 1},
+  flex: { flex: 1 },
   buttonStyle: {
     marginTop: 65,
     marginBottom: 22,
@@ -319,7 +325,7 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  {sendOtpRequest},
+  { sendOtpRequest },
 )(ForgotPassword);
 
 class LoginFields extends Component {
@@ -370,8 +376,8 @@ class LoginFields extends Component {
           break;
       }
     }
-    this.setState({isValid, text});
-    onChangeText && onChangeText({inputKey, isValid, value: text, inputId});
+    this.setState({ isValid, text });
+    onChangeText && onChangeText({ inputKey, isValid, value: text, inputId });
   };
 
   setSecureInput = secureInput => {
@@ -397,7 +403,7 @@ class LoginFields extends Component {
       textInputRef,
       onSubmitEditing,
     } = this.props;
-    const {isPasswordField, secureInput} = this.state;
+    const { isPasswordField, secureInput } = this.state;
 
     return (
       <View
@@ -497,7 +503,7 @@ const loginFieldsStyles = StyleSheet.create({
 });
 
 //-------------ActionButtonCommon-----------//
-const ActionButtonRounded = ({title, onButonPress, containerStyle}) => {
+const ActionButtonRounded = ({ title, onButonPress, containerStyle }) => {
   return (
     <TouchableOpacity
       onPress={() => {

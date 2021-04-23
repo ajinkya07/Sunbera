@@ -38,7 +38,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { Toast } from 'native-base';
 import { urls } from '@api/urls';
 import { withNavigationFocus } from '@react-navigation/compat';
-import { ThemeProvider } from '@react-navigation/native';
 import Theme from '../../values/Theme';
 import IconPack from '../OnBoarding/Login/IconPack';
 import Carousel, {
@@ -88,7 +87,6 @@ class HomePage extends Component {
 
   componentDidMount = async () => {
     const type = Platform.OS === 'ios' ? 'ios' : 'android';
-    console.log('userId', userId);
     await this.getHomePage();
     await this.getTotalCart();
 
@@ -534,15 +532,11 @@ class HomePage extends Component {
   };
 
   categoryViewDesignNew = (item, index) => {
+
     let baseUrl = urls.imageUrl + 'public/backend/collection/';
 
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          //justifyContent: 'space-between',
-          //backgroundColor: '#000',
-        }}>
+      <View style={{ flexDirection: 'row', }}>
         {index % 4 == 1 && (
           <View
             style={{
@@ -550,13 +544,21 @@ class HomePage extends Component {
               height: hp(18),
               marginVertical: hp(1),
               marginRight: hp(1),
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 4,
+              },
+              shadowOpacity: 0.32,
+              shadowRadius: 5.46,
+              elevation: 9,
             }}>
             <TouchableOpacity onPress={() => this.getProductGridOrNot(item)}>
               <Image
                 resizeMode="contain"
-                style={{ height: hp(18), width: wp(35) }}
+                style={{ height: hp(18), width: wp(35), }}
                 defaultSource={IconPack.APP_LOGO}
-                source={{ uri: baseUrl + item.image_name }}
+                source={item.image_name != '' ? { uri: baseUrl + item.image_name } : IconPack.APP_LOGO}
               />
               <_Text
                 numberOfLines={2}
@@ -567,7 +569,7 @@ class HomePage extends Component {
                   top: 10,
                   left: 10,
                 }}>
-                {item.col_name}
+                {(item.col_name).charAt(0).toUpperCase() + item.col_name.slice(1)}
               </_Text>
             </TouchableOpacity>
           </View>
@@ -581,13 +583,21 @@ class HomePage extends Component {
               marginLeft: wp(36),
               height: hp(18),
               width: wp(63),
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 4,
+              },
+              shadowOpacity: 0.32,
+              shadowRadius: 5.46,
+              elevation: 9,
             }}>
             <TouchableOpacity onPress={() => this.getProductGridOrNot(item)}>
               <Image
                 resizeMode="contain"
                 style={{ height: hp(18), width: wp(63) }}
                 defaultSource={IconPack.APP_LOGO}
-                source={{ uri: baseUrl + item.image_name }}
+                source={item.image_name != '' ? { uri: baseUrl + item.image_name } : IconPack.APP_LOGO}
               />
               <_Text
                 numberOfLines={2}
@@ -599,7 +609,7 @@ class HomePage extends Component {
                   color: '#000000',
                   textAlign: 'center',
                 }}>
-                {item.col_name}
+                {(item.col_name).charAt(0).toUpperCase() + item.col_name.slice(1)}
               </_Text>
             </TouchableOpacity>
           </View>
@@ -612,13 +622,21 @@ class HomePage extends Component {
               height: hp(18),
               width: wp(63),
               marginRight: hp(1),
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 4,
+              },
+              shadowOpacity: 0.32,
+              shadowRadius: 5.46,
+              elevation: 9,
             }}>
             <TouchableOpacity onPress={() => this.getProductGridOrNot(item)}>
               <Image
                 resizeMode="contain"
                 style={{ height: hp(18), width: wp(63) }}
                 defaultSource={IconPack.APP_LOGO}
-                source={{ uri: baseUrl + item.image_name }}
+                source={item.image_name != '' ? { uri: baseUrl + item.image_name } : IconPack.APP_LOGO}
               />
               <_Text
                 numberOfLines={2}
@@ -629,7 +647,7 @@ class HomePage extends Component {
                   top: 10,
                   left: 10,
                 }}>
-                {item.col_name}
+                {(item.col_name).charAt(0).toUpperCase() + item.col_name.slice(1)}
               </_Text>
             </TouchableOpacity>
           </View>
@@ -643,13 +661,21 @@ class HomePage extends Component {
               marginLeft: wp(64),
               height: hp(18),
               width: wp(35),
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 4,
+              },
+              shadowOpacity: 0.32,
+              shadowRadius: 5.46,
+              elevation: 9,
             }}>
             <TouchableOpacity onPress={() => this.getProductGridOrNot(item)}>
               <Image
                 resizeMode="contain"
                 style={{ height: hp(18), width: wp(35) }}
                 defaultSource={IconPack.APP_LOGO}
-                source={{ uri: baseUrl + item.image_name }}
+                source={item.image_name != '' ? { uri: baseUrl + item.image_name } : IconPack.APP_LOGO}
               />
               <_Text
                 numberOfLines={2}
@@ -661,7 +687,7 @@ class HomePage extends Component {
                   color: '#000000',
                   textAlign: 'center',
                 }}>
-                {item.col_name}
+                {(item.col_name).charAt(0).toUpperCase() + item.col_name.slice(1)}
               </_Text>
             </TouchableOpacity>
           </View>
@@ -1014,7 +1040,6 @@ class HomePage extends Component {
     return (
       <View style={mainContainer}>
         <ScrollView
-          // bounces={false}
           refreshControl={
             <RefreshControl
               refreshing={isFetching}
@@ -1025,13 +1050,16 @@ class HomePage extends Component {
           {this.carausalView2(bannerData)}
 
           {/* CATEGORY DESIGNS */}
-          <View style={{ backgroundColor: '#303030', top: -10 }}>
+
+          <View style={{ top: 10 }}>
             {categoryData && categoryData.map((item, index) => (
               <View style={{ top: -10, left: 2 }} key={'c' + index}>
                 {this.categoryViewDesignNew(item, item.position)}
               </View>
             ))}
           </View>
+
+
           {/* BANNER */}
           {userStatus.status == 'Active' && (
             <View>

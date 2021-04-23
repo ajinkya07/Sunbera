@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -12,7 +12,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import _Text from '@text/_Text';
-import {color} from '@values/colors';
+import { color } from '@values/colors';
 
 const horizontalMargin = 20;
 const slideWidth = 280;
@@ -28,8 +28,7 @@ export default {
   },
   mainContainer: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
-    // marginBottom:hp(1)
+    backgroundColor: '#f3fcf9',
   },
 
   topHeading: {

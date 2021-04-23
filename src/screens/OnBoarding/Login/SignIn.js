@@ -1,4 +1,4 @@
-import React, {useState, Component, useRef} from 'react';
+import React, { useState, Component, useRef } from 'react';
 import {
   View,
   Text,
@@ -15,14 +15,14 @@ import {
   Keyboard,
   ScrollView,
 } from 'react-native';
-import {Container, Content, Icon, Toast} from 'native-base';
+import { Container, Content, Icon, Toast } from 'native-base';
 import IconPack from '@login/IconPack';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {color} from '@values/colors';
+import { color } from '@values/colors';
 import {
   validateEmail,
   validateMobNum,
@@ -32,9 +32,9 @@ import {
 } from '@values/validate';
 
 import AsyncStorage from '@react-native-community/async-storage';
-import {signInRequest, sendFCM} from '@login/LoginAction';
+import { signInRequest, sendFCM } from '@login/LoginAction';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -95,8 +95,6 @@ class SignIn extends React.Component {
   async componentDidUpdate(prevProps, prevState) {
     if (this.state.successLoginVersion > prevState.successLoginVersion) {
       if (this.props.loginData.user_status === 'Available') {
-        // this.showToast('Login successfull', 'success');
-        // this.props.navigation.navigate('Container');
         this.sendFcmToken();
       } else {
         this.showToast('Please contact admin', 'danger');
@@ -129,7 +127,7 @@ class SignIn extends React.Component {
     await this.props.sendFCM(fcmData);
   };
 
-  onInputChanged = ({inputKey, isValid, value}) => {
+  onInputChanged = ({ inputKey, isValid, value }) => {
     let validationKey = '';
     switch (inputKey) {
       case 'mobileNo':
@@ -166,7 +164,7 @@ class SignIn extends React.Component {
   };
 
   loginRequest = () => {
-    const {password, isPassword, mobileNo, isMobile} = this.state;
+    const { password, isPassword, mobileNo, isMobile } = this.state;
 
     let error = '';
     try {
@@ -206,7 +204,7 @@ class SignIn extends React.Component {
   };
 
   render() {
-    const {mobileNo, password} = this.state;
+    const { mobileNo, password } = this.state;
 
     return (
       <Container>
@@ -218,7 +216,7 @@ class SignIn extends React.Component {
                 ios: -150,
                 android: 500,
               })}
-              style={{flex: 1}}>
+              style={{ flex: 1 }}>
               <ScrollView
                 showsVerticalScrollIndicator={false}
                 keyboardShouldPersistTaps={'always'}>
@@ -229,7 +227,21 @@ class SignIn extends React.Component {
                     justifyContent: 'center',
                   }}>
                   <View style={styles.viewContainer}>
+
                     <View
+                      style={{
+                        alignItems: 'center',
+                        marginTop: hp(10),
+                        height: hp(19),
+                      }}>
+                      <Image
+                        source={require('../../../assets/Home-Icon.png')}
+                        style={{ height: 100, width: 100, }}
+                        resizeMode={'contain'}
+                      />
+                    </View>
+
+                    {/* <View
                       style={{
                         alignItems: 'center',
                         marginTop: hp(10),
@@ -245,7 +257,7 @@ class SignIn extends React.Component {
                         }}>
                         SUNBERA
                       </Text>
-                    </View>
+                    </View> */}
 
                     <LoginFields
                       value={mobileNo ? mobileNo : null}
@@ -277,7 +289,7 @@ class SignIn extends React.Component {
                       textInputRef={this.passwordRef}
                     />
 
-                    <View style={{justifyContent: 'flex-end', marginLeft: 110}}>
+                    <View style={{ justifyContent: 'flex-end', marginLeft: 110 }}>
                       <TouchableOpacity
                         onPress={() =>
                           this.props.navigation.navigate('ForgotPassword')
@@ -305,7 +317,7 @@ class SignIn extends React.Component {
 
                     {this.props.isFetching && this.showLoader()}
 
-                    <View style={{flexDirection: 'row'}}>
+                    <View style={{ flexDirection: 'row' }}>
                       <Text
                         style={{
                           paddingTop: 12,
@@ -336,7 +348,7 @@ class SignIn extends React.Component {
                 </Content>
               </ScrollView>
             </KeyboardAvoidingView>
-            {/* {this.props.isFetching && this.renderLoader()} */}
+
           </SafeAreaView>
         </ImageBackground>
       </Container>
@@ -354,7 +366,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
-  flex: {flex: 1},
+  flex: { flex: 1 },
   buttonStyle: {
     //marginTop: 60,
   },
@@ -384,7 +396,7 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  {signInRequest, sendFCM},
+  { signInRequest, sendFCM },
 )(SignIn);
 
 class LoginFields extends Component {
@@ -435,8 +447,8 @@ class LoginFields extends Component {
           break;
       }
     }
-    this.setState({isValid, text});
-    onChangeText && onChangeText({inputKey, isValid, value: text, inputId});
+    this.setState({ isValid, text });
+    onChangeText && onChangeText({ inputKey, isValid, value: text, inputId });
   };
 
   setSecureInput = secureInput => {
@@ -462,7 +474,7 @@ class LoginFields extends Component {
       textInputRef,
       onSubmitEditing,
     } = this.props;
-    const {isPasswordField, secureInput} = this.state;
+    const { isPasswordField, secureInput } = this.state;
 
     return (
       <View
@@ -562,7 +574,7 @@ const loginFieldsStyles = StyleSheet.create({
 });
 
 //-------------ActionButtonCommon-----------//
-const ActionButtonRounded = ({title, onButonPress, containerStyle}) => {
+const ActionButtonRounded = ({ title, onButonPress, containerStyle }) => {
   return (
     <TouchableOpacity
       onPress={() => {

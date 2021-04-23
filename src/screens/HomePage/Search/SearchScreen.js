@@ -80,7 +80,7 @@ class SearchScreen extends Component {
       errorAllParamaterVersion: 0,
       karatData: [],
       isOkKaratClicked: false,
-      selectedStatus: '1',
+      selectedStatus: 1,
       selectedItems: [],
       selectedItems2: [],
       items2: [],
@@ -684,6 +684,7 @@ class SearchScreen extends Component {
   };
 
   setSelectedStatus = value => {
+    console.log("value", value, typeof value);
     this.setState({
       selectedStatus: value,
     });
@@ -717,13 +718,8 @@ class SearchScreen extends Component {
       isModalVisible,
       isSearchCodeVisible,
       isKaratModalVisible,
-      selectedKarat,
-      karatData,
-      selectedStatus,
-      selectedItems2,
-      selectedCategories,
-      isContinueClicked,
     } = this.state;
+
     const { allParameterData } = this.props;
 
     const list = allParameterData && allParameterData.melting;
@@ -781,7 +777,7 @@ class SearchScreen extends Component {
             {this.productReleaseDate()}
           </View>
 
-          <View style={{ paddingVertical: hp(1), marginHorizontal: wp(3) }}>
+          <View style={{ paddingTop: hp(1), marginHorizontal: wp(3) }}>
             <_Text fsHeading>Product Status:</_Text>
             <Picker
               iosIcon={
@@ -797,22 +793,21 @@ class SearchScreen extends Component {
                 width: '70%',
                 justifyContent: 'space-between',
                 width: wp(95),
-                marginTop: -5,
+                marginTop: -10,
               }}
               selectedValue={this.state.selectedStatus}
               onValueChange={value => this.setSelectedStatus(value)}>
-              {statusArray &&
-                statusArray.map(s => (
-                  <Picker.Item
-                    key={s.id.toString()}
-                    label={s.status}
-                    value={parseInt(s.id)}
-                  />
-                ))}
+              {statusArray && statusArray.map(s => (
+                <Picker.Item
+                  key={s.id.toString()}
+                  label={s.status}
+                  value={parseInt(s.id)}
+                />
+              ))}
             </Picker>
           </View>
 
-          <View style={{ paddingVertical: hp(1) }}>{this.selectKarat()}</View>
+          <View style={{ paddingBottom: hp(1) }}>{this.selectKarat()}</View>
 
           <View style={{ paddingHorizontal: wp(2) }}>
             <SectionedMultiSelect
@@ -827,11 +822,10 @@ class SearchScreen extends Component {
               onSelectedItemObjectsChange={this.onSelectedItemsChange2}
               selectedItems={this.state.selectedItems}
               modalWithSafeAreaView={true}
-              subItemFontFamily={'Roboto'}
               onConfirm={this.onConfirmCategory}
               onCancel={this.onCancelCategory}
               showCancelButton={true}
-              showRemoveAll={true}
+              showRemoveAll={false}
             />
           </View>
         </ScrollView>
@@ -1069,7 +1063,6 @@ class SearchScreen extends Component {
                                   listItem.melting_name,
                                 )
                               }
-                              // onFillColor="#FFFFFF"
                               onFillColor="#11255a"
                               onTintColor="gray"
                               onCheckColor="#ffffff"
@@ -1103,7 +1096,6 @@ class SearchScreen extends Component {
                   <ActionButtonRounded
                     title="CONTINUE"
                     onButonPress={() => this.onOKkaratSelected()}
-                    // containerStyle={styles.buttonStyle}
                     color={headerTheme}
                   />
                 </View>
@@ -1337,20 +1329,17 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   searchBar: {
-    ...Theme.ffLatoRegular14,
+    ...Theme.ffLatoRegular15,
     margin: 10,
-    height: 38,
+    height: 40,
     backgroundColor: 'white',
     borderColor: '#d2d2d2',
     borderWidth: 1,
-    //marginLeft: 7,
+    paddingHorizontal: 10
   },
   itemText: {
     margin: 1,
-    // color: '#FFFFFF',
-
     ...Theme.ffLatoBold15,
-    //backgroundColor: '#657fd6',
     height: 45,
     padding: 12,
   },

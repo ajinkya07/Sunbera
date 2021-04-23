@@ -164,20 +164,15 @@ class CategoryContainer extends Component {
         {fromSeeMore &&
           <_CustomHeader
             Title={'Category'}
-            //  RightBtnIcon1={require('../../assets/image/BlueIcons/Search.png')}
             RightBtnIcon2={require('../../assets/image/BlueIcons/Notification-White.png')}
             LeftBtnPress={() => this.props.navigation.goBack()}
-            //RightBtnPressOne={()=> this.props.navigation.navigate('SearchScreen')}
             RightBtnPressTwo={() => this.props.navigation.navigate('Notification')}
             rightIconHeight2={hp(3.5)}
             LeftBtnPress={() => this.props.navigation.goBack()}
             backgroundColor={color.green}
           />}
 
-        <View style={{
-          justifyContent: 'center', width: wp(100),
-          marginBottom: hp(1), flex: 1
-        }}>
+        <View style={{ justifyContent: 'center', width: wp(100), marginBottom: hp(1), flex: 1 }}>
           <FlatList
             onRefresh={() => this.onRefresh()}
             refreshing={isFetching}
@@ -186,36 +181,38 @@ class CategoryContainer extends Component {
             keyExtractor={item => item.id}
             renderItem={({ item, index }) => (
               <TouchableOpacity onPress={() => this.getProductGridOrNot(item)}>
-                <Animatable.View animation="flipInX" style={{ paddingTop: hp(1), paddingBottom: hp(0.5) }}>
-                  <View style={{ flexDirection: 'row', flex: 1, marginLeft: hp(2), marginRight: hp(2) }}>
+                <Animatable.View animation="flipInX" style={{ paddingVertical: hp(1), }}>
+                  <View style={{ flexDirection: 'row', flex: 1, marginHorizontal: hp(2), }}>
                     <View style={{ flex: 0.25, justifyContent: 'flex-start', }}>
                       <Image
                         style={{
                           height: hp(10), width: hp(10), borderRadius: 10,
                           borderWidth: 0.4, borderColor: color.gray
                         }}
-                        source={{ uri: baseUrl + item.image_name }}
+                        source={item.image_name != '' ? { uri: baseUrl + item.image_name } : IconPack.APP_LOGO}
                         defaultSource={IconPack.APP_LOGO}
                         resizeMode='contain'
                       />
                     </View>
 
                     <View style={{ alignContent: 'center', justifyContent: 'center', flex: 0.70 }}>
-                      <_Text numberOfLines={2} fwSmall
-                        fsMedium style={{ marginRight: hp(3), marginLeft: Platform.OS === 'ios' ? hp(1) : 0 }}>
+                      <_Text
+                        numberOfLines={2}
+                        fwSmall
+                        fsMedium
+                        style={{ marginRight: hp(1), }}>
                         {capitalizeFirstLetter(item.col_name)}
                       </_Text>
                     </View>
                   </View>
-                  {index !== 9 &&
-                    <View
-                      style={{
-                        paddingTop: hp(1), marginLeft: wp(22), marginRight: wp(3),
-                        alignSelf: 'stretch',
-                        borderBottomColor: '#D3D3D3',
-                        borderBottomWidth: 1,
-                      }}
-                    />}
+                  <View
+                    style={{
+                      paddingTop: hp(1), marginLeft: wp(24), marginRight: wp(1),
+                      alignSelf: 'stretch',
+                      borderBottomColor: '#D3D3D3',
+                      borderBottomWidth: 1,
+                    }}
+                  />
                 </Animatable.View>
               </TouchableOpacity>
             )
