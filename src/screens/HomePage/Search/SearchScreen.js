@@ -32,7 +32,7 @@ import CheckBox from '@react-native-community/checkbox';
 import { Toast, Picker } from 'native-base';
 import { strings } from '@values/strings';
 
-import { searchProducts, searchByCode } from '@search/SearchAction';
+import { searchProducts, searchByCode, searchProductsCount, saveSearchPayload } from '@search/SearchAction'
 import FromDatePicker from './FromDatePicker';
 import ToDatePicker from './ToDatePicker';
 import FloatingLabelTextInput from '@floatingInputBox/FloatingLabelTextInput';
@@ -86,6 +86,10 @@ class SearchScreen extends Component {
       items2: [],
       items3: [],
       items: [],
+
+      successSearchCountVersion: 0,
+      errorSearchCountVersion: 0,
+
     };
 
     userId = global.userId;
@@ -95,20 +99,17 @@ class SearchScreen extends Component {
     const { homePageData } = this.props;
 
     if (homePageData && homePageData.search_collection) {
-      this.setState({
-        collection: homePageData.search_collection,
-      });
+      this.setState({ collection: homePageData.search_collection, });
     }
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const {
-      successSearchbyCategoryVersion,
-      errorSearchbyCategoryVersion,
-      successSearchbyCodeVersion,
-      errorSearchbyCodeVersion,
-      errorAllParamaterVersion,
-      successAllParameterVersion,
+      successSearchbyCategoryVersion, errorSearchbyCategoryVersion,
+      successSearchbyCodeVersion, errorSearchbyCodeVersion,
+      errorAllParamaterVersion, successAllParameterVersion,
+      successSearchCountVersion, errorSearchCountVersion
+
     } = nextProps;
 
     let newState = null;
@@ -155,35 +156,34 @@ class SearchScreen extends Component {
         errorAllParamaterVersion: nextProps.errorAllParamaterVersion,
       };
     }
+    if (successSearchCountVersion > prevState.successSearchCountVersion) {
+      newState = {
+        ...newState,
+        successSearchCountVersion: nextProps.successSearchCountVersion,
+      };
+    }
+    if (errorSearchCountVersion > prevState.errorSearchCountVersion) {
+      newState = {
+        ...newState,
+        errorSearchCountVersion: nextProps.errorSearchCountVersion,
+      };
+    }
 
     return newState;
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    const {
-      searchByCategoryData,
-      searchByCodeData,
-      allParameterData,
-    } = this.props;
+    const { searchCountData } = this.props;
 
-    if (
-      this.state.successSearchbyCategoryVersion >
-      prevState.successSearchbyCategoryVersion
-    ) {
-      this.props.navigation.navigate('SearchProductGrid', {
-        fromCodeSearch: false,
-      });
+    if (this.state.successSearchbyCategoryVersion > prevState.successSearchbyCategoryVersion) {
+      if (searchCountData.ack == '1') {
+        this.props.navigation.navigate('SearchProductGrid', { fromCodeSearch: false, searchCount: searchCountData.data })
+      }
     }
-    if (
-      this.state.errorSearchbyCategoryVersion >
-      prevState.errorSearchbyCategoryVersion
-    ) {
+    if (this.state.errorSearchbyCategoryVersion > prevState.errorSearchbyCategoryVersion) {
       this.showToast(this.props.errorMsgSearch, 'danger');
     }
-    if (
-      this.state.successSearchbyCodeVersion >
-      prevState.successSearchbyCodeVersion
-    ) {
+    if (this.state.successSearchbyCodeVersion > prevState.successSearchbyCodeVersion) {
       this.props.navigation.navigate('SearchProductGrid', {
         fromCodeSearch: true,
       });
@@ -256,16 +256,6 @@ class SearchScreen extends Component {
 
   setToDate = newDate => {
     const { fromDate } = this.state;
-
-    // var timeStamp = new Date().getTime() + 1 * 24 * 60 * 60 * 1000;
-    // var timeStampDate = moment(new Date(timeStamp).toISOString().slice(0, 10)).format('DD-MM-YYYY');
-
-    // if (fromDate != '' && newDate != '' && timeStampDate > newDate) {
-    //     alert('Date must be greater than from date');
-    //   }
-    //   else if (!fromDate && newDate!=''){
-    //     this.setState({ toDate: newDate });
-    //   }
 
     this.setState({ toDate: newDate });
   };
@@ -561,19 +551,10 @@ class SearchScreen extends Component {
 
   searchProducts = () => {
     const {
-      gwFrom,
-      gwTo,
-      nwFrom,
-      nwTo,
-      fromDate,
-      toDate,
-      selectedCategories,
-      selectedItems2,
-      selectedKarat,
-      selectedStatus,
+      gwFrom, gwTo, nwFrom, nwTo, fromDate,
+      toDate, selectedCategories, selectedItems2, selectedKarat, selectedStatus,
     } = this.state;
 
-    console.log('categoryIds', categoryIds);
 
     if (selectedItems2.length > 0) {
       const s = new FormData();
@@ -595,6 +576,45 @@ class SearchScreen extends Component {
       s.append('created_date_to', toDate ? toDate : '');
 
       this.props.searchProducts(s);
+
+      const countData = new FormData()
+      countData.append('table', 'product_master')
+      countData.append('mode_type', 'count_data')
+      countData.append('user_id', userId)
+      countData.append('record', 10)
+      countData.append('page_no', 0)
+      countData.append('collection_ids', categoryIds.toString())
+      countData.append('sort_by', 2)
+      countData.append('min_gross_weight', gwFrom ? gwFrom : '')
+      countData.append('max_gross_weight', gwTo ? gwTo : '')
+      countData.append('min_net_weight', nwFrom ? nwFrom : '')
+      countData.append('max_net_weight', nwTo ? nwTo : '')
+      countData.append('product_status', selectedStatus)
+      countData.append('melting_id  ', karatIds.toString())
+      countData.append('created_date_from', fromDate ? fromDate : '')
+      countData.append('created_date_to', toDate ? toDate : '')
+
+      this.props.searchProductsCount(countData)
+
+      const payload = {
+        table: 'product_master',
+        mode_type: 'count_data',
+        user_id: userId,
+        record: 10,
+        page_no: 0,
+        collection_ids: categoryIds.toString(),
+        sort_by: 2,
+        min_gross_weight: gwFrom ? gwFrom : '',
+        max_gross_weight: gwTo ? gwTo : '',
+        min_net_weight: nwFrom ? nwFrom : '',
+        max_net_weight: nwTo ? nwTo : '',
+        product_status: selectedStatus,
+        melting_id: karatIds.toString(),
+        created_date_from: fromDate ? fromDate : '',
+        created_date_to: toDate ? toDate : '',
+      }
+      this.props.saveSearchPayload(payload)
+
     } else {
       this.showToast('Please select category');
     }
@@ -704,8 +724,6 @@ class SearchScreen extends Component {
     categoryIds = selectedItems2.map(x => {
       return x.id;
     });
-
-    console.log('selectedItems2', selectedItems2);
   };
 
   onCancelCategory = () => {
@@ -729,9 +747,7 @@ class SearchScreen extends Component {
       { id: '2', status: 'Sold' },
     ];
 
-    let headerTheme = allParameterData.theme_color
-      ? allParameterData.theme_color
-      : '';
+    let headerTheme = allParameterData.theme_color ? allParameterData.theme_color : '';
 
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
@@ -743,7 +759,6 @@ class SearchScreen extends Component {
             this.props.navigation.navigate('Notification')
           }
           rightIconHeight2={hp(3.5)}
-          backgroundColor="#19af81"
         />
         <ScrollView alwaysBounceVertical={false} bounces={false}>
           <View
@@ -1131,16 +1146,19 @@ function mapStateToProps(state) {
     searchByCodeData: state.searchReducer.searchByCodeData,
 
     allParameterData: state.homePageReducer.allParameterData,
-    successAllParameterVersion:
-      state.homePageReducer.successAllParameterVersion,
+    successAllParameterVersion: state.homePageReducer.successAllParameterVersion,
     errorAllParamaterVersion: state.homePageReducer.errorAllParamaterVersion,
+
+    successSearchCountVersion: state.searchReducer.successSearchCountVersion,
+    errorSearchCountVersion: state.searchReducer.errorSearchCountVersion,
+    searchCountData: state.searchReducer.searchCountData,
+
+    searchPayload: state.searchReducer.searchPayload,
+
   };
 }
 
-export default connect(
-  mapStateToProps,
-  { searchProducts, searchByCode },
-)(SearchScreen);
+export default connect(mapStateToProps, { searchProducts, searchByCode, searchProductsCount, saveSearchPayload })(SearchScreen);
 
 const styles = StyleSheet.create({
   border: {

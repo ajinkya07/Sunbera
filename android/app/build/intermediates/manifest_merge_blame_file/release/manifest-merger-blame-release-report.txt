@@ -1,0 +1,471 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.sunbera"
+4    android:versionCode="2"
+5    android:versionName="1.0.1" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+8-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:3:3-65
+11-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:3:20-62
+12    <uses-permission android:name="android.permission.CAMERA" />
+12-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:4:3-62
+12-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:4:20-60
+13    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+13-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:5:3-79
+13-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:5:20-76
+14    <uses-permission android:name="android.permission.VIBRATE" />
+14-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:6:3-64
+14-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:6:20-61
+15
+16    <uses-feature
+16-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:7:3-83
+17        android:name="android.hardware.camera"
+17-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:7:17-55
+18        android:required="false" />
+18-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:7:56-80
+19    <uses-feature
+19-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:8:3-89
+20        android:name="android.hardware.camera.front"
+20-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:8:17-61
+21        android:required="false" />
+21-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:8:62-86
+22
+23    <uses-permission android:name="android.permission.WAKE_LOCK" />
+23-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:5-68
+23-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:22-65
+24    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+24-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:5-79
+24-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:22-76
+25    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+25-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:10:5-81
+25-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:10:22-78
+26    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+26-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:25:5-82
+26-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:25:22-79
+27    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- for android -->
+27-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:26:5-110
+27-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:26:22-107
+28    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
+29    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
+30    <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
+31    <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> -->
+32    <!-- for Samsung -->
+33    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+33-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
+33-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
+34    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- for htc -->
+34-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
+34-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
+35    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
+35-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
+35-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
+36    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- for sony -->
+36-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
+36-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
+37    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+37-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
+37-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
+38    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> <!-- for apex -->
+38-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
+38-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
+39    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- for solid -->
+39-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
+39-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
+40    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" /> <!-- for huawei -->
+40-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
+40-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
+41    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+41-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
+41-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
+42    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+42-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
+42-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
+43    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- for ZUK -->
+43-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
+43-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
+44    <uses-permission android:name="android.permission.READ_APP_BADGE" /> <!-- for OPPO -->
+44-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
+44-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
+45    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+45-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
+45-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
+46    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- for EvMe -->
+46-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
+46-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
+47    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
+47-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
+47-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
+48    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
+48-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
+48-->[me.leolin:ShortcutBadger:1.1.22] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b7cd27410d3ac709f38b7b5effa49e97/ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86
+49
+50    <application
+50-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:9:3-17:17
+51        android:name="com.sunbera.MainApplication"
+51-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:9:16-47
+52        android:allowBackup="false"
+52-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:9:162-189
+53        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+53-->[androidx.core:core:1.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/9a4658afade2e57b9a640b6674c28496/core-1.1.0/AndroidManifest.xml:24:18-86
+54        android:icon="@mipmap/ic_launcher"
+54-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:9:81-115
+55        android:label="@string/app_name"
+55-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:9:48-80
+56        android:largeHeap="true"
+56-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:9:258-282
+57        android:roundIcon="@mipmap/ic_launcher_round"
+57-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:9:116-161
+58        android:theme="@style/AppTheme"
+58-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:9:190-221
+59        android:usesCleartextTraffic="true" >
+59-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:9:222-257
+60        <activity
+60-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:10:5-15:16
+61            android:name="com.sunbera.MainActivity"
+61-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:10:15-43
+62            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+62-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:10:77-154
+63            android:label="@string/app_name"
+63-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:10:44-76
+64            android:launchMode="singleTask"
+64-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:10:155-186
+65            android:windowSoftInputMode="adjustResize" >
+65-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:10:187-229
+66            <intent-filter>
+66-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:11:7-14:23
+67                <action android:name="android.intent.action.MAIN" />
+67-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:12:9-61
+67-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:12:17-58
+68
+69                <category android:name="android.intent.category.LAUNCHER" />
+69-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:13:9-69
+69-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:13:19-66
+70            </intent-filter>
+71        </activity>
+72        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+72-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:16:5-82
+72-->/Users/ajinkya/Desktop/Sunbera/android/app/src/main/AndroidManifest.xml:16:15-79
+73
+74        <service android:name="io.invertase.firebase.messaging.ReactNativeFirebaseMessagingHeadlessService" />
+74-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:9-111
+74-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:18-108
+75        <service
+75-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:17:9-23:19
+76            android:name="io.invertase.firebase.messaging.ReactNativeFirebaseMessagingService"
+76-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:18:13-95
+77            android:exported="false" >
+77-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:19:13-37
+78            <intent-filter>
+78-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:20:13-22:29
+79                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+79-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:21:17-78
+79-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:21:25-75
+80            </intent-filter>
+81        </service>
+82
+83        <receiver
+83-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:25:9-32:20
+84            android:name="io.invertase.firebase.messaging.ReactNativeFirebaseMessagingReceiver"
+84-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:26:13-96
+85            android:exported="true"
+85-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:27:13-36
+86            android:permission="com.google.android.c2dm.permission.SEND" >
+86-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:28:13-73
+87            <intent-filter>
+87-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:29:13-31:29
+88                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+88-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:30:17-81
+88-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:30:25-78
+89            </intent-filter>
+90        </receiver>
+91
+92        <meta-data
+92-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:34:9-36:36
+93            android:name="firebase_messaging_auto_init_enabled"
+93-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:35:13-64
+94            android:value="true" />
+94-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:36:13-33
+95        <meta-data
+95-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:37:9-39:32
+96            android:name="com.google.firebase.messaging.default_notification_channel_id"
+96-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:38:13-89
+97            android:value="" />
+97-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:39:13-29
+98        <meta-data
+98-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:40:9-42:47
+99            android:name="com.google.firebase.messaging.default_notification_color"
+99-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:41:13-84
+100            android:resource="@color/white" />
+100-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:42:13-44
+101
+102        <provider
+102-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:9-21:20
+103            android:name="androidx.core.content.FileProvider"
+103-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:14:13-62
+104            android:authorities="com.sunbera.provider"
+104-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:13-60
+105            android:exported="false"
+105-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:13-37
+106            android:grantUriPermissions="true" >
+106-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:17:13-47
+107            <meta-data
+107-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:18:13-20:58
+108                android:name="android.support.FILE_PROVIDER_PATHS"
+108-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:19:17-67
+109                android:resource="@xml/provider_paths" />
+109-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:20:17-55
+110        </provider>
+111
+112        <activity
+112-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:23:9-25:72
+113            android:name="com.yalantis.ucrop.UCropActivity"
+113-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:24:13-60
+114            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+114-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:25:13-69
+115
+116        <provider
+116-->[:react-native-share] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-share/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:9-20:20
+117            android:name="cl.json.RNShareFileProvider"
+117-->[:react-native-share] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-share/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:13-55
+118            android:authorities="com.sunbera.rnshare.fileprovider"
+118-->[:react-native-share] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-share/android/build/intermediates/library_manifest/release/AndroidManifest.xml:14:13-72
+119            android:exported="false"
+119-->[:react-native-share] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-share/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:13-37
+120            android:grantUriPermissions="true" >
+120-->[:react-native-share] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-share/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:13-47
+121            <meta-data
+121-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:18:13-20:58
+122                android:name="android.support.FILE_PROVIDER_PATHS"
+122-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:19:17-67
+123                android:resource="@xml/share_download_paths" />
+123-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:20:17-55
+124        </provider>
+125        <provider
+125-->[:react-native-webview] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:12:9-20:20
+126            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+126-->[:react-native-webview] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:13:13-83
+127            android:authorities="com.sunbera.fileprovider"
+127-->[:react-native-webview] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:14:13-64
+128            android:exported="false"
+128-->[:react-native-webview] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:15:13-37
+129            android:grantUriPermissions="true" >
+129-->[:react-native-webview] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-webview/android/build/intermediates/library_manifest/release/AndroidManifest.xml:16:13-47
+130            <meta-data
+130-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:18:13-20:58
+131                android:name="android.support.FILE_PROVIDER_PATHS"
+131-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:19:17-67
+132                android:resource="@xml/file_provider_paths" />
+132-->[:react-native-image-crop-picker] /Users/ajinkya/Desktop/Sunbera/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/release/AndroidManifest.xml:20:17-55
+133        </provider>
+134
+135        <receiver
+135-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:28:9-35:20
+136            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+136-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:29:13-78
+137            android:exported="true"
+137-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:30:13-36
+138            android:permission="com.google.android.c2dm.permission.SEND" >
+138-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:31:13-73
+139            <intent-filter>
+139-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:29:13-31:29
+140                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+140-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:30:17-81
+140-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:30:25-78
+141            </intent-filter>
+142        </receiver>
+143        <!--
+144             FirebaseMessagingService performs security checks at runtime,
+145             but set to not exported to explicitly avoid allowing another app to call it.
+146        -->
+147        <service
+147-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:41:9-48:19
+148            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+148-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:42:13-82
+149            android:directBootAware="true"
+149-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:43:13-43
+150            android:exported="false" >
+150-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:44:13-37
+151            <intent-filter android:priority="-500" >
+151-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:20:13-22:29
+152                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+152-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:21:17-78
+152-->[:react-native-firebase_messaging] /Users/ajinkya/Desktop/Sunbera/node_modules/@react-native-firebase/messaging/android/build/intermediates/library_manifest/release/AndroidManifest.xml:21:25-75
+153            </intent-filter>
+154        </service>
+155        <service
+155-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:49:9-55:19
+156            android:name="com.google.firebase.components.ComponentDiscoveryService"
+156-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:50:13-84
+157            android:directBootAware="true"
+157-->[com.google.firebase:firebase-common:19.5.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/520c17610e4c5712f23034cf1a5d7e18/jetified-firebase-common-19.5.0/AndroidManifest.xml:35:13-43
+158            android:exported="false" >
+158-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:51:13-37
+159            <meta-data
+159-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:52:13-54:85
+160                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+160-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:53:17-119
+161                android:value="com.google.firebase.components.ComponentRegistrar" />
+161-->[com.google.firebase:firebase-messaging:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/2d4a1aa08cb3397a0b62e383e3c58ddb/jetified-firebase-messaging-21.1.0/AndroidManifest.xml:54:17-82
+162            <meta-data
+162-->[com.google.firebase:firebase-datatransport:17.0.10] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/f18d85733b39224da6f5e506ba255c3b/firebase-datatransport-17.0.10/AndroidManifest.xml:28:13-30:85
+163                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+163-->[com.google.firebase:firebase-datatransport:17.0.10] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/f18d85733b39224da6f5e506ba255c3b/firebase-datatransport-17.0.10/AndroidManifest.xml:29:17-115
+164                android:value="com.google.firebase.components.ComponentRegistrar" />
+164-->[com.google.firebase:firebase-datatransport:17.0.10] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/f18d85733b39224da6f5e506ba255c3b/firebase-datatransport-17.0.10/AndroidManifest.xml:30:17-82
+165            <meta-data
+165-->[com.google.firebase:firebase-iid:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/f180c9217b75367f26f084e6097d97b3/firebase-iid-21.1.0/AndroidManifest.xml:32:13-34:85
+166                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+166-->[com.google.firebase:firebase-iid:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/f180c9217b75367f26f084e6097d97b3/firebase-iid-21.1.0/AndroidManifest.xml:33:17-96
+167                android:value="com.google.firebase.components.ComponentRegistrar" />
+167-->[com.google.firebase:firebase-iid:21.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/f180c9217b75367f26f084e6097d97b3/firebase-iid-21.1.0/AndroidManifest.xml:34:17-82
+168            <meta-data
+168-->[com.google.android.gms:play-services-measurement-api:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/156df2eac9fa9df701bb6de8b807d36c/play-services-measurement-api-17.6.0/AndroidManifest.xml:30:13-32:85
+169                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+169-->[com.google.android.gms:play-services-measurement-api:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/156df2eac9fa9df701bb6de8b807d36c/play-services-measurement-api-17.6.0/AndroidManifest.xml:31:17-139
+170                android:value="com.google.firebase.components.ComponentRegistrar" />
+170-->[com.google.android.gms:play-services-measurement-api:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/156df2eac9fa9df701bb6de8b807d36c/play-services-measurement-api-17.6.0/AndroidManifest.xml:32:17-82
+171            <meta-data
+171-->[com.google.firebase:firebase-installations:16.3.5] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/02feabdb06cce2054be1f0639284f227/firebase-installations-16.3.5/AndroidManifest.xml:18:13-20:85
+172                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+172-->[com.google.firebase:firebase-installations:16.3.5] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/02feabdb06cce2054be1f0639284f227/firebase-installations-16.3.5/AndroidManifest.xml:19:17-127
+173                android:value="com.google.firebase.components.ComponentRegistrar" />
+173-->[com.google.firebase:firebase-installations:16.3.5] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/02feabdb06cce2054be1f0639284f227/firebase-installations-16.3.5/AndroidManifest.xml:20:17-82
+174            <!--
+175                This registrar is not defined in the dynamic-module-support sdk itself to allow non-firebase
+176                clients to use it as well, by defining this registrar in their own core/common library.
+177            -->
+178            <meta-data
+178-->[com.google.firebase:firebase-common:19.5.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/520c17610e4c5712f23034cf1a5d7e18/jetified-firebase-common-19.5.0/AndroidManifest.xml:43:13-45:85
+179                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
+179-->[com.google.firebase:firebase-common:19.5.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/520c17610e4c5712f23034cf1a5d7e18/jetified-firebase-common-19.5.0/AndroidManifest.xml:44:17-121
+180                android:value="com.google.firebase.components.ComponentRegistrar" />
+180-->[com.google.firebase:firebase-common:19.5.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/520c17610e4c5712f23034cf1a5d7e18/jetified-firebase-common-19.5.0/AndroidManifest.xml:45:17-82
+181        </service>
+182        <service
+182-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/a7f22c8624e49ec28dc13e1b14687a8a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
+183            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+183-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/a7f22c8624e49ec28dc13e1b14687a8a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
+184            android:exported="false" >
+184-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/a7f22c8624e49ec28dc13e1b14687a8a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
+185            <meta-data
+185-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/a7f22c8624e49ec28dc13e1b14687a8a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
+186                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+186-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/a7f22c8624e49ec28dc13e1b14687a8a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
+187                android:value="cct" />
+187-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/a7f22c8624e49ec28dc13e1b14687a8a/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
+188        </service>
+189        <service
+189-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/9a9309292f98f86f7a1cc4fe473bc27c/jetified-transport-runtime-2.2.5/AndroidManifest.xml:26:9-30:19
+190            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+190-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/9a9309292f98f86f7a1cc4fe473bc27c/jetified-transport-runtime-2.2.5/AndroidManifest.xml:27:13-117
+191            android:exported="false"
+191-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/9a9309292f98f86f7a1cc4fe473bc27c/jetified-transport-runtime-2.2.5/AndroidManifest.xml:28:13-37
+192            android:permission="android.permission.BIND_JOB_SERVICE" >
+192-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/9a9309292f98f86f7a1cc4fe473bc27c/jetified-transport-runtime-2.2.5/AndroidManifest.xml:29:13-69
+193        </service>
+194
+195        <receiver
+195-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/9a9309292f98f86f7a1cc4fe473bc27c/jetified-transport-runtime-2.2.5/AndroidManifest.xml:32:9-34:40
+196            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+196-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/9a9309292f98f86f7a1cc4fe473bc27c/jetified-transport-runtime-2.2.5/AndroidManifest.xml:33:13-132
+197            android:exported="false" />
+197-->[com.google.android.datatransport:transport-runtime:2.2.5] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/9a9309292f98f86f7a1cc4fe473bc27c/jetified-transport-runtime-2.2.5/AndroidManifest.xml:34:13-37
+198
+199        <meta-data
+199-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/73fee767e29e41e2e8788a6ed60301a3/okhttp3-integration-4.11.0/AndroidManifest.xml:11:9-13:43
+200            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
+200-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/73fee767e29e41e2e8788a6ed60301a3/okhttp3-integration-4.11.0/AndroidManifest.xml:12:13-84
+201            android:value="GlideModule" />
+201-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/73fee767e29e41e2e8788a6ed60301a3/okhttp3-integration-4.11.0/AndroidManifest.xml:13:13-40
+202
+203        <activity
+203-->[com.google.android.gms:play-services-auth:18.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/417cd6b002d4424cfc58e4ad88ce24b6/play-services-auth-18.1.0/AndroidManifest.xml:23:9-27:75
+204            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+204-->[com.google.android.gms:play-services-auth:18.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/417cd6b002d4424cfc58e4ad88ce24b6/play-services-auth-18.1.0/AndroidManifest.xml:24:13-93
+205            android:excludeFromRecents="true"
+205-->[com.google.android.gms:play-services-auth:18.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/417cd6b002d4424cfc58e4ad88ce24b6/play-services-auth-18.1.0/AndroidManifest.xml:25:13-46
+206            android:exported="false"
+206-->[com.google.android.gms:play-services-auth:18.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/417cd6b002d4424cfc58e4ad88ce24b6/play-services-auth-18.1.0/AndroidManifest.xml:26:13-37
+207            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+207-->[com.google.android.gms:play-services-auth:18.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/417cd6b002d4424cfc58e4ad88ce24b6/play-services-auth-18.1.0/AndroidManifest.xml:27:13-72
+208        <!--
+209            Service handling Google Sign-In user revocation. For apps that do not integrate with
+210            Google Sign-In, this service will never be started.
+211        -->
+212        <service
+212-->[com.google.android.gms:play-services-auth:18.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/417cd6b002d4424cfc58e4ad88ce24b6/play-services-auth-18.1.0/AndroidManifest.xml:33:9-37:51
+213            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+213-->[com.google.android.gms:play-services-auth:18.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/417cd6b002d4424cfc58e4ad88ce24b6/play-services-auth-18.1.0/AndroidManifest.xml:34:13-89
+214            android:exported="true"
+214-->[com.google.android.gms:play-services-auth:18.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/417cd6b002d4424cfc58e4ad88ce24b6/play-services-auth-18.1.0/AndroidManifest.xml:35:13-36
+215            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+215-->[com.google.android.gms:play-services-auth:18.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/417cd6b002d4424cfc58e4ad88ce24b6/play-services-auth-18.1.0/AndroidManifest.xml:36:13-107
+216            android:visibleToInstantApps="true" />
+216-->[com.google.android.gms:play-services-auth:18.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/417cd6b002d4424cfc58e4ad88ce24b6/play-services-auth-18.1.0/AndroidManifest.xml:37:13-48
+217
+218        <activity
+218-->[com.google.android.gms:play-services-base:17.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/c4fb6b3249f446fdb0995f0c1cd7339f/play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
+219            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+219-->[com.google.android.gms:play-services-base:17.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/c4fb6b3249f446fdb0995f0c1cd7339f/play-services-base-17.1.0/AndroidManifest.xml:24:13-79
+220            android:exported="false"
+220-->[com.google.android.gms:play-services-base:17.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/c4fb6b3249f446fdb0995f0c1cd7339f/play-services-base-17.1.0/AndroidManifest.xml:25:13-37
+221            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+221-->[com.google.android.gms:play-services-base:17.1.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/c4fb6b3249f446fdb0995f0c1cd7339f/play-services-base-17.1.0/AndroidManifest.xml:26:13-72
+222
+223        <provider
+223-->[com.google.firebase:firebase-common:19.5.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/520c17610e4c5712f23034cf1a5d7e18/jetified-firebase-common-19.5.0/AndroidManifest.xml:26:9-31:39
+224            android:name="com.google.firebase.provider.FirebaseInitProvider"
+224-->[com.google.firebase:firebase-common:19.5.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/520c17610e4c5712f23034cf1a5d7e18/jetified-firebase-common-19.5.0/AndroidManifest.xml:27:13-77
+225            android:authorities="com.sunbera.firebaseinitprovider"
+225-->[com.google.firebase:firebase-common:19.5.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/520c17610e4c5712f23034cf1a5d7e18/jetified-firebase-common-19.5.0/AndroidManifest.xml:28:13-72
+226            android:directBootAware="true"
+226-->[com.google.firebase:firebase-common:19.5.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/520c17610e4c5712f23034cf1a5d7e18/jetified-firebase-common-19.5.0/AndroidManifest.xml:29:13-43
+227            android:exported="false"
+227-->[com.google.firebase:firebase-common:19.5.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/520c17610e4c5712f23034cf1a5d7e18/jetified-firebase-common-19.5.0/AndroidManifest.xml:30:13-37
+228            android:initOrder="100" />
+228-->[com.google.firebase:firebase-common:19.5.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/520c17610e4c5712f23034cf1a5d7e18/jetified-firebase-common-19.5.0/AndroidManifest.xml:31:13-36
+229
+230        <receiver
+230-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:29:9-33:20
+231            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+231-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:30:13-85
+232            android:enabled="true"
+232-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:31:13-35
+233            android:exported="false" >
+233-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:32:13-37
+234        </receiver>
+235
+236        <service
+236-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:35:9-38:40
+237            android:name="com.google.android.gms.measurement.AppMeasurementService"
+237-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:36:13-84
+238            android:enabled="true"
+238-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:37:13-35
+239            android:exported="false" />
+239-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:38:13-37
+240        <service
+240-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:39:9-43:72
+241            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+241-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:40:13-87
+242            android:enabled="true"
+242-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:41:13-35
+243            android:exported="false"
+243-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:42:13-37
+244            android:permission="android.permission.BIND_JOB_SERVICE" />
+244-->[com.google.android.gms:play-services-measurement:17.6.0] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/6ad602824357b915c6075deaa31ff0c7/play-services-measurement-17.6.0/AndroidManifest.xml:43:13-69
+245
+246        <meta-data
+246-->[com.google.android.gms:play-services-basement:17.1.1] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b8e3cd97f5f9965ddba8873bcb31ec24/jetified-play-services-basement-17.1.1/AndroidManifest.xml:23:9-25:69
+247            android:name="com.google.android.gms.version"
+247-->[com.google.android.gms:play-services-basement:17.1.1] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b8e3cd97f5f9965ddba8873bcb31ec24/jetified-play-services-basement-17.1.1/AndroidManifest.xml:24:13-58
+248            android:value="@integer/google_play_services_version" />
+248-->[com.google.android.gms:play-services-basement:17.1.1] /Users/ajinkya/.gradle/caches/transforms-2/files-2.1/b8e3cd97f5f9965ddba8873bcb31ec24/jetified-play-services-basement-17.1.1/AndroidManifest.xml:25:13-66
+249    </application>
+250
+251</manifest>

@@ -250,14 +250,14 @@ class Register extends React.Component {
                   <View
                     style={{
                       alignItems: 'center',
-                      marginTop: hp(4),
+                      marginTop: hp(2),
                       height: hp(15),
                     }}>
-
-                    <Image
-                      source={require('../../../assets/Home-Icon.png')}
-                      style={{ height: 100, width: 100, }}
-                      resizeMode={'contain'}
+                    <ImageBackground
+                      source={require('../../../assets/appIcon.png')}
+                      style={{ height: 120, width: 200, top: -20, }}
+                      imageStyle={{ borderRadius: 10 }}
+                      resizeMode={'stretch'}
                     />
                     {/* <Text
                       style={{

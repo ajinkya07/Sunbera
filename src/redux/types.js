@@ -13,6 +13,14 @@ export const OTP_DATA_SUCCESS = "otpDataSuccess";
 export const OTP_DATA_ERROR = "otpDataError";
 export const OTP_DATA_RESET_REDUCER = "otpDataResetReducer";
 
+
+export const SEARCH_COUNT = "searchCount";
+export const SEARCH_COUNT_SUCCESS = "searchCountSuccess";
+export const SEARCH_COUNT_ERROR = "searchCountError";
+
+export const SEARCH_PAYLOAD = "searchPayload";
+
+
 export const OTP_REGISTER_DATA = "OTPRegisterData";
 export const OTP_REGISTER_DATA_SUCCESS = "OTPRegisterDataSuccess";
 export const OTP_REGISTER_DATA_ERROR = "OTPRegisterDataError";

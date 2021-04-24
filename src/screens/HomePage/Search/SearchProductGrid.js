@@ -34,6 +34,7 @@ import {
 } from '@productGrid/ProductGridAction';
 
 import { getTotalCartCount } from '@homepage/HomePageAction';
+import { searchProducts } from '@search/SearchAction'
 
 import { Toast, CheckBox } from 'native-base';
 import Modal from 'react-native-modal';
@@ -48,6 +49,7 @@ class SearchProductGrid extends Component {
     super(props);
 
     const from = this.props.route.params.fromCodeSearch;
+    const searchCount = this.props.route.params.searchCount;
 
     this.state = {
       gridData: [],
@@ -58,6 +60,7 @@ class SearchProductGrid extends Component {
       clickedLoadMore: false,
       selectedSortById: '2',
       fromCodeSearch: from,
+      searchCount: searchCount,
 
       successProductGridVersion: 0,
       errorProductGridVersion: 0,
@@ -75,6 +78,9 @@ class SearchProductGrid extends Component {
 
       productTotalcountSuccessVersion: 0,
       productTotalcountErrorVersion: 0,
+      successSearchbyCategoryVersion: 0,
+      errorSearchbyCategoryVersion: 0,
+
     };
     userId = global.userId;
   }
@@ -83,16 +89,10 @@ class SearchProductGrid extends Component {
     const { searchByCategoryData } = this.props;
     const { gridData } = this.state;
 
-    if (
-      searchByCategoryData &&
-      searchByCategoryData.data.products &&
-      searchByCategoryData.data.products.length > 0
-    ) {
+    if (searchByCategoryData && searchByCategoryData.data.products && searchByCategoryData.data.products.length > 0) {
       this.setState({
-        gridData:
-          this.state.page === 0
-            ? searchByCategoryData.data.products
-            : [...this.state.gridData, ...searchByCategoryData.data.products],
+        gridData: this.state.page === 0 ? searchByCategoryData.data.products
+          : [...this.state.gridData, ...searchByCategoryData.data.products],
       });
 
       let id = searchByCategoryData.data.products[0].collection_id;
@@ -125,8 +125,23 @@ class SearchProductGrid extends Component {
 
       productTotalcountSuccessVersion,
       productTotalcountErrorVersion,
+      successSearchbyCategoryVersion, errorSearchbyCategoryVersion,
+
     } = nextProps;
     let newState = null;
+
+    if (successSearchbyCategoryVersion > prevState.successSearchbyCategoryVersion) {
+      newState = {
+        ...newState,
+        successSearchbyCategoryVersion: nextProps.successSearchbyCategoryVersion,
+      };
+    }
+    if (errorSearchbyCategoryVersion > prevState.errorSearchbyCategoryVersion) {
+      newState = {
+        ...newState,
+        errorSearchbyCategoryVersion: nextProps.errorSearchbyCategoryVersion,
+      };
+    }
 
     if (successProductGridVersion > prevState.successProductGridVersion) {
       newState = {
@@ -240,29 +255,25 @@ class SearchProductGrid extends Component {
       addProductToWishlistData,
       addProductToCartData,
       productAddToCartPlusOneData,
-      totalCartCountData,
+      totalCartCountData, searchByCategoryData
+
     } = this.props;
 
     const { categoryData, page, selectedSortById, gridData } = this.state;
 
-    if (
-      this.state.successProductGridVersion > prevState.successProductGridVersion
-    ) {
-      if (productGridData.products && productGridData.products.length > 0) {
-        this.setState({
-          gridData:
-            this.state.page === 0
-              ? productGridData.products
-              : [...this.state.gridData, ...productGridData.products],
-        });
-      } else {
-        this.showToast('Please contact admin', 'danger');
-      }
+
+    if (this.state.successSearchbyCategoryVersion > prevState.successSearchbyCategoryVersion) {
+      this.setState({
+        gridData: this.state.page === 0 ? searchByCategoryData.data.products
+          : [...this.state.gridData, ...searchByCategoryData.data.products],
+      });
+    }
+    if (this.state.errorSearchbyCategoryVersion > prevState.errorSearchbyCategoryVersion) {
+      this.showToast(this.props.errorMsgSearch, 'danger')
     }
 
-    if (
-      this.state.errorProductGridVersion > prevState.errorProductGridVersion
-    ) {
+
+    if (this.state.errorProductGridVersion > prevState.errorProductGridVersion) {
       Toast.show({
         text: this.props.errorMsg
           ? this.props.errorMsg
@@ -589,17 +600,6 @@ class SearchProductGrid extends Component {
     wishlistData.append('product_inventory_table', 'product_master');
 
     await this.props.addProductToWishlist(wishlistData);
-
-    //   const data1 = new FormData();
-    //   data1.append('table', 'product_master');
-    //   data1.append('mode_type', 'normal');
-    //   data1.append('collection_id', id);
-    //   data1.append('user_id', userId);
-    //   data1.append('record', 10);
-    //   data1.append('page_no', page);
-    //   data1.append('sort_by', selectedSortById);
-
-    //  await this.props.getProductSubCategoryData(data1);
   };
 
   addProductToCart = async item => {
@@ -715,92 +715,62 @@ class SearchProductGrid extends Component {
     );
   };
 
+
   LoadMoreData = () => {
-    const { productTotalcount } = this.props;
-    const { gridData } = this.state;
+    const { productTotalcount, isFetchingSearch } = this.props
+    const { gridData, searchCount, } = this.state
 
-    let count = productTotalcount.count;
-
-    if (gridData.length !== count && gridData.length < count) {
-      this.setState(
-        {
-          page: this.state.page + 1,
-        },
+    if (gridData.length !== searchCount && gridData.length < searchCount && !isFetchingSearch) {
+      this.setState({
+        page: this.state.page + 1,
+      },
         () => this.LoadRandomData(),
       );
-    } else if (gridData.length === count || gridData.length > count) {
+    }
+    else if (gridData.length === searchCount || gridData.length > searchCount) {
       Toast.show({
         text: 'No more products to show',
-      });
+      })
     }
-  };
+  }
 
   LoadRandomData = () => {
     const { gridData, page } = this.state;
 
-    const { allParameterData } = this.props;
+    const { allParameterData, searchPayload } = this.props;
 
-    let accessCheck = allParameterData && allParameterData.access_check;
+    let accessCheck = allParameterData && allParameterData.access_check
 
-    let id = gridData && gridData[0].collection_id;
+    let id = gridData && gridData[0].collection_id
+
 
     if (accessCheck == '1') {
-      const data = new FormData();
-      data.append('table', 'product_master');
-      data.append('mode_type', 'normal');
-      data.append('collection_id', id);
-      data.append('user_id', userId);
-      data.append('record', 10);
-      data.append('page_no', page);
-      data.append('sort_by', '2');
+      const s = new FormData()
+      s.append('table', 'product_master')
+      s.append('mode_type', 'filter_data')
+      s.append('user_id', userId)
+      s.append('record', 10)
+      s.append('page_no', page)
+      s.append('collection_ids', searchPayload.collection_ids.toString())
+      s.append('sort_by', 2)
+      s.append('min_gross_weight', searchPayload.min_gross_weight ? searchPayload.min_gross_weight : '')
+      s.append('max_gross_weight', searchPayload.max_gross_weight ? searchPayload.max_gross_weight : '')
+      s.append('min_net_weight', searchPayload.min_net_weight ? searchPayload.min_net_weight : '')
+      s.append('max_net_weight', searchPayload.max_net_weight ? searchPayload.max_net_weight : '')
+      s.append('product_status', searchPayload.product_status)
+      s.append('melting_id  ', searchPayload.melting_id.toString())
+      s.append('created_date_from', searchPayload.created_date_from ? searchPayload.created_date_from : '')
+      s.append('created_date_to', searchPayload.created_date_to ? searchPayload.created_date_to : '')
 
-      this.props.getProductSubCategoryData(data);
-    } else {
-      alert(
-        'Your access to full category has been expired. Please contact administrator to get access.',
-      );
+      this.props.searchProducts(s)
+
+    }
+    else {
+      alert('Your access to full category has been expired. Please contact administrator to get access.')
     }
   };
 
-  footer = () => {
-    return (
-      <View>
-        {!this.props.isFetching && this.state.gridData.length >= 10 ? (
-          <TouchableOpacity onPress={() => this.LoadMoreData()}>
-            <View
-              style={{
-                flex: 1,
-                height: hp(7),
-                width: wp(100),
-                backgroundColor: '#EEF8F7',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <Text
-                style={{ color: '#0d185c', fontSize: 18, fontWeight: 'bold' }}>
-                Load More
-              </Text>
-            </View>
-          </TouchableOpacity>
-        ) : null}
-        {this.state.clickedLoadMore &&
-          this.props.isFetching &&
-          this.state.gridData.length >= 10 ? (
-            <View
-              style={{
-                flex: 1,
-                height: 40,
-                width: wp(100),
-                backgroundColor: '#EEF8F7',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <ActivityIndicator size="small" color={color.brandColor} />
-            </View>
-          ) : null}
-      </View>
-    );
-  };
+
 
   onTextChanged = (inputKey, value) => {
     this.setState({
@@ -829,17 +799,11 @@ class SearchProductGrid extends Component {
           // Subtitle={ `(${(gridData.length).toString()})`}
           RightBtnIcon1={require('../../../assets/image/BlueIcons/Search-White.png')}
           RightBtnIcon2={require('../../../assets/shopping-cart.png')}
-          RightBtnPressOne={() =>
-            this.props.navigation.navigate('SearchScreen')
-          }
+          RightBtnPressOne={() => this.props.navigation.navigate('SearchScreen')}
           RightBtnPressTwo={() =>
-            this.props.navigation.navigate('CartContainer', {
-              fromProductGrid: true,
-            })
-          }
+            this.props.navigation.navigate('CartContainer', { fromProductGrid: true, })}
           rightIconHeight2={hp(3.5)}
           LeftBtnPress={() => this.props.navigation.goBack()}
-          backgroundColor="#19af81"
         />
 
         {gridData && (
@@ -848,14 +812,13 @@ class SearchProductGrid extends Component {
             showsHorizontalScrollIndicator={true}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
-              <View style={{ marginBottom: hp(1), marginTop: hp(1) }}>
+              <View style={{ marginVertical: hp(1), }}>
                 {this.gridView(item)}
               </View>
             )}
             numColumns={2}
             keyExtractor={(item, index) => item.product_inventory_id.toString()}
             style={{ marginTop: hp(1) }}
-            // ListFooterComponent={this.footer()}
             onEndReachedThreshold={0.4}
             onEndReached={() => this.LoadMoreData()}
           />
@@ -1066,10 +1029,11 @@ function mapStateToProps(state) {
     errorAllParamaterVersion: state.homePageReducer.errorAllParamaterVersion,
 
     productTotalcount: state.productGridReducer.productTotalcount,
-    productTotalcountSuccessVersion:
-      state.productGridReducer.productTotalcountSuccessVersion,
-    productTotalcountErrorVersion:
-      state.productGridReducer.productTotalcountErrorVersion,
+    productTotalcountSuccessVersion: state.productGridReducer.productTotalcountSuccessVersion,
+    productTotalcountErrorVersion: state.productGridReducer.productTotalcountErrorVersion,
+
+    searchPayload: state.searchReducer.searchPayload,
+
   };
 }
 
@@ -1082,5 +1046,6 @@ export default connect(
     addRemoveProductFromCartByOne,
     getTotalCartCount,
     getProductTotalCount,
+    searchProducts
   },
 )(SearchProductGrid);

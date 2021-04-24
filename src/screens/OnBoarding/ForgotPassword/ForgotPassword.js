@@ -200,11 +200,12 @@ class ForgotPassword extends React.Component {
                       marginTop: hp(2),
                       height: hp(20),
                     }}>
-                    <View style={{ marginBottom: hp(4) }}>
-                      <Image
-                        source={require('../../../assets/Home-Icon.png')}
-                        style={{ height: 100, width: 100, }}
-                        resizeMode={'contain'}
+                    <View style={{ marginBottom: hp(2) }}>
+                      <ImageBackground
+                        source={require('../../../assets/appIcon.png')}
+                        style={{ height: 120, width: 200, top: -20, }}
+                        imageStyle={{ borderRadius: 10 }}
+                        resizeMode={'stretch'}
                       />
                       {/* <Text
                         style={{

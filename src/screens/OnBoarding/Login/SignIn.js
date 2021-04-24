@@ -234,10 +234,11 @@ class SignIn extends React.Component {
                         marginTop: hp(10),
                         height: hp(19),
                       }}>
-                      <Image
-                        source={require('../../../assets/Home-Icon.png')}
-                        style={{ height: 100, width: 100, }}
-                        resizeMode={'contain'}
+                      <ImageBackground
+                        source={require('../../../assets/appIcon.png')}
+                        style={{ height: 120, width: 200, top: -20, }}
+                        imageStyle={{ borderRadius: 10 }}
+                        resizeMode={'stretch'}
                       />
                     </View>
 
