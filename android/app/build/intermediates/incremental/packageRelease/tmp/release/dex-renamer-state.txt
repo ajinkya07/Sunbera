@@ -1,7 +1,0 @@
-#Sat Apr 24 13:18:27 IST 2021
-base.0=/Users/ajinkya/Desktop/Sunbera/android/app/build/intermediates/dex/release/mergeDexRelease/out/classes.dex
-path.1=classes2.dex
-renamed.1=classes2.dex
-path.0=classes.dex
-renamed.0=classes.dex
-base.1=/Users/ajinkya/Desktop/Sunbera/android/app/build/intermediates/dex/release/mergeDexRelease/out/classes2.dex
