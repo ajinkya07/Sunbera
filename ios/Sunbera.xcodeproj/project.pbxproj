@@ -11,7 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		17B046B42612280D00B0095F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17B046B32612280D00B0095F /* GoogleService-Info.plist */; };
+		17E75C822719836F00CEDA43 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17E75C812719836F00CEDA43 /* GoogleService-Info.plist */; };
 		1B2F14E0F4E675FCE931BD9F /* libPods-Sunbera-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B97F20E7197A58C741132976 /* libPods-Sunbera-tvOSTests.a */; };
 		1C8B2452D7A94095A6C2E336 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA594CFC40848C29579E7D5 /* Roboto.ttf */; };
 		1F1CCF2B48FE5BCC60392526 /* libPods-Sunbera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5921FD71B0E1E4B61A5461A7 /* libPods-Sunbera.a */; };
@@ -59,8 +59,8 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sunbera/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Sunbera/main.m; sourceTree = "<group>"; };
 		14F483E3EF8C40138E42579D /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
-		17B046B32612280D00B0095F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Documents/A_firebaseFiles/Sunbera/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		17B0483D26123A4700B0095F /* Sunbera.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Sunbera.entitlements; path = Sunbera/Sunbera.entitlements; sourceTree = "<group>"; };
+		17E75C812719836F00CEDA43 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../All_Imp_Certificates/A_firebaseFiles/Sunbera/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1ABBBEE6B482F857F73A4103 /* Pods-Sunbera-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sunbera-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Sunbera-tvOSTests/Pods-Sunbera-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1E9447E73E70516D6BEF5A73 /* Pods-Sunbera-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sunbera-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Sunbera-tvOSTests/Pods-Sunbera-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		20DA14DAFAA84FE384065179 /* Lato-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Medium.ttf"; path = "../assets/fonts/Lato-Medium.ttf"; sourceTree = "<group>"; };
@@ -159,9 +159,9 @@
 				17B0483D26123A4700B0095F /* Sunbera.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				17E75C812719836F00CEDA43 /* GoogleService-Info.plist */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				17B046B32612280D00B0095F /* GoogleService-Info.plist */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -406,7 +406,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				17B046B42612280D00B0095F /* GoogleService-Info.plist in Resources */,
+				17E75C822719836F00CEDA43 /* GoogleService-Info.plist in Resources */,
 				A2DCC2EC371141C18A651401 /* Lato-Bold.ttf in Resources */,
 				273426C2BC6041B19EB05AC5 /* Lato-Medium.ttf in Resources */,
 				436ECE93A8054519BAED78CC /* Lato-Regular.ttf in Resources */,
@@ -809,12 +809,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Sunbera/Sunbera.entitlements;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ZAWGQ38PQJ;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Sunbera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -835,11 +835,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Sunbera/Sunbera.entitlements;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ZAWGQ38PQJ;
 				INFOPLIST_FILE = Sunbera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
